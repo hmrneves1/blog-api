@@ -1,0 +1,6 @@
+#1
+SubscribersController > request_unsuscribe_token()
+    @TODO develop an email notification with unsubscribe link
+
+
+#2

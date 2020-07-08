@@ -1,0 +1,4 @@
+php artisan make:request Api/v1/Categories/StoreNewCategory
+php artisan make:request Api/v1/Categories/UpdateCategory
+php artisan make:request Api/v1/Posts/StoreNewPost
+php artisan make:request Api/v1/Posts/UpdatePost

@@ -1,0 +1,979 @@
+{
+	"info": {
+		"_postman_id": "2589edc4-d475-4744-9691-d9963306a6d0",
+		"name": "blog-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Authentication",
+			"item": [
+				{
+					"name": "register() Register new user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Helder Neves",
+									"type": "text"
+								},
+								{
+									"key": "user_name",
+									"value": "hmrneves",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "password_confirm",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "hmrneves@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/auth/register",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login() | Do login to get the api token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout() | User logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2EwODBiNGNiZDc3MWRlNDNiN2NmOWNhZDBjNWNkNzI3OTg4MzQyMTVlMDg2ZDdiNTYzYmJhNGU1MDg5NWNkZGUyMGVlNDU5NDliNmRhNjYiLCJpYXQiOjE1OTQyMzEzODgsIm5iZiI6MTU5NDIzMTM4OCwiZXhwIjoxNTk2OTA5Nzg4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Hdv_3p5i7-luNAaa3JplumtXDy_0O_kwCIfNS9D4hsDN_DNn0WfTpIBOchu-7nuB44tNmoM2LotANBHGYWh4EtSjzhAFMD2VfZTF9eJYC4i7jZvkpSBVmDKnGSQz-lBycmoKbdptKAtHFIJub_Vlv81sJPgEmXSuMivR800RcKWgPCEkMnoKtkG2qcqKmCQZ1Xf6QE0071KBy35BegaRypma-SzqQ0W_yLadpdZ2fTAld18dmJQPoh08TQGB8GDgkz3IkS_lmkkMpCdzAM6JTApWShKix3xYsLfSgYdUPC6Q2CKzIOe0soSf_8DgSCkvFjzfQe6scF5FkQKab5GwGkEF4uXut5FIa_Kfa2Cx6Zf-VFu11D4KgtsMCFkyT7xcwqlpRZR067WB-SCubMIfFm9Zx4Za8oXBGztiOfApQYwBbzdUidNhG5-eweCtJO7xnqdZfP7Bkk10TY03wz57SgG4ZUa5GutkKt16cSyt4fwZ_FqJYDc91stibXZmWLVTO6aB3m7RP11Z0jTg04B-chHghUU-joQjVJ2M2mG0qaYW_PbUOHMPy8wL2GoeLR68eJRg22DMDNzoCGeBYdhNXw-JRTOHBQ3Ga8lxa34E2jszinxPntuute-bojGPIb0ZA6WKXFXTGyiGjWwqp30Qm7rUXaM-B_Rl5q8wtt76xcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/auth/logout",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "2. Categories",
+			"item": [
+				{
+					"name": "index() | Get all categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/categories",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						},
+						"description": "Get all categories using index() from controller."
+					},
+					"response": []
+				},
+				{
+					"name": "show() | Get a single category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/categories/2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store() | Require a Bearer Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjEyZDU4ZWExN2ZhODVhODY2YTljMzhkODIzNzRjYzgxZTU3MzJlNWFkZTc4NjEwMmE2YTNiZTU4ZjE0ZTY3OGQ5YTY1Y2MzNmMxM2Y5OTMiLCJpYXQiOjE1OTQwNjE0NDUsIm5iZiI6MTU5NDA2MTQ0NSwiZXhwIjoxNjI1NTk3NDQ1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.tES8Lo9_6h99VC57lS_oHmOilTh61tCt1WXltZBOsNJmZdC1LDJrW22iFlDJ6M_0fOwjZkaEjthYqGTuSmniyO9CcDChXSTZYBuiNLA9Ti3t_woU8E_L4jTgd2DXLMeThXKZ_NzjNn9R5be0Cse9wuMVMoVxJbdflUr6uTkSNs9986SUiiKu_MoBbfuZ6oOcBnVQ0q0YrxhWrnJeEkMC3MwUGfFoc7aPa2EI8IaMe6v3gddboTYqZB2J_d3iNnNeFU8L2pmAIzQ8Ml9levKLSy9HuAM7C5JcmxTae1-S0hStHN_LSEtD4aJsxiD4feYXX9y3wKSBGoLMLzW5uuTvP0ixN8scUje1ktauzKdyAYP-NMtTtqXvUsL_URtTovcIoevphY52jxkjAgNE9GigH6Zza2CRNssIST8nkW5gtxSQr0cUjik2cjcnLx165u1r9kqgl68Wxa1dcBLuWWg-eUu18e6VzFf_CUtirjab508XYqu7fFriZfm4DO0mFWytUfNwHsxlyzDem-ldznqceR-oL8YS4aceHhAH51V_4uOueClFzbqPXOjQBeTS76POc5OKP5-EhJjcmFLvRJIFiMTbJYAqNOVdq2i4Ur5el7lFAX61iYsel2J4OjTvAS2vmgbIaQWa6t-6lVPIJ5ZYnEx0GlO5zlbu79L__27ceMs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "PHP",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/categories",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update() | Require a Bearer Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjEyZDU4ZWExN2ZhODVhODY2YTljMzhkODIzNzRjYzgxZTU3MzJlNWFkZTc4NjEwMmE2YTNiZTU4ZjE0ZTY3OGQ5YTY1Y2MzNmMxM2Y5OTMiLCJpYXQiOjE1OTQwNjE0NDUsIm5iZiI6MTU5NDA2MTQ0NSwiZXhwIjoxNjI1NTk3NDQ1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.tES8Lo9_6h99VC57lS_oHmOilTh61tCt1WXltZBOsNJmZdC1LDJrW22iFlDJ6M_0fOwjZkaEjthYqGTuSmniyO9CcDChXSTZYBuiNLA9Ti3t_woU8E_L4jTgd2DXLMeThXKZ_NzjNn9R5be0Cse9wuMVMoVxJbdflUr6uTkSNs9986SUiiKu_MoBbfuZ6oOcBnVQ0q0YrxhWrnJeEkMC3MwUGfFoc7aPa2EI8IaMe6v3gddboTYqZB2J_d3iNnNeFU8L2pmAIzQ8Ml9levKLSy9HuAM7C5JcmxTae1-S0hStHN_LSEtD4aJsxiD4feYXX9y3wKSBGoLMLzW5uuTvP0ixN8scUje1ktauzKdyAYP-NMtTtqXvUsL_URtTovcIoevphY52jxkjAgNE9GigH6Zza2CRNssIST8nkW5gtxSQr0cUjik2cjcnLx165u1r9kqgl68Wxa1dcBLuWWg-eUu18e6VzFf_CUtirjab508XYqu7fFriZfm4DO0mFWytUfNwHsxlyzDem-ldznqceR-oL8YS4aceHhAH51V_4uOueClFzbqPXOjQBeTS76POc5OKP5-EhJjcmFLvRJIFiMTbJYAqNOVdq2i4Ur5el7lFAX61iYsel2J4OjTvAS2vmgbIaQWa6t-6lVPIJ5ZYnEx0GlO5zlbu79L__27ceMs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Updated Category",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/categories/2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy() | Require a Bearer Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZDEzMmZhNmI5Y2I4ZTA4MTI4ZTJjOTE4N2MyODNlNTU0ZDY0NDY3NmQ4YzI5OTRlZjI1ZjcwMDJkMDhlZTgyZTQyN2UyY2FlYjlmZWViY2QiLCJpYXQiOjE1OTQwNjE0ODUsIm5iZiI6MTU5NDA2MTQ4NSwiZXhwIjoxNjI1NTk3NDg1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.xH9MD_LpWwYYWbfd0ArFQBIbepvzXKENjcyuGAWjtpZkIamCaFMV2vfOiDPkhCDlolIQvlf8E-HpsQUWMpdfGV8v2tdWi_sYLsWu2rH5qvdW7eyGLoL6sA4k4gZUaDTL9OvZi8el8pqzUBbsZMNjf9I2RbQEJQqGsOqslJMKnVlXZknV4oZJIy3beXEBItZjETbM5UP9SFPizYKt33GpGHMk1JatkDPwBYdylT7zPAeyjimKFxUrJPy8F7IHBqLzKc4wcuSJSpWUt0ghkT5mu66DU4RzPuatCjpF9Tza-Rokuzo9VQ2V8mJcMPTSm0UYhVh35fbcX3fURYtcwHar0dLBiMRjcZvNu6ZZyCCp4QCjunr1Fwn7CsfKfdQ5E4XaxGDxySxxYd7ci4EO8WJPuBFJJHvP8oXiR-QJ-S7v95s13hlbAABvd0CJYUdFgRww5wNhi-msyviQM6qJRJcL1xIzNYE7xRQxrRkewfNuXmhpjtcKUsNHO6-S40NN79VhkmsWfY5fGJ36qAYhqm5dkHEa_jll7IdxhLdlsqy64BPEhbOvZZBmRO6ONAqhai8sbDzCVA59S1zXDgM7iW5fCPjQRKKJqVlxZhvD8mi531XqZfDkzONl-TEzyVfr8T8XB5FeHfvrI5C5B2uQB99pOkZ2CF7BVPwCAXjjfUy_sOQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "DELETE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/categories/8",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "3. Posts",
+			"item": [
+				{
+					"name": "index() | Get all posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/posts",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show() | Get a single post ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/posts/<slug>",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"<slug>"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store() | Require a Bearer Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "It's a simple test on App\\Posts::store()",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et sagittis mauris. Phasellus dolor ante.",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/helderneves/Google Drive/_HELDER NEVES/MEMES/HNE_SLB_Dollify.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/posts",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update() | Require a Bearer Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "New Title",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/helderneves/Google Drive/_HELDER NEVES/MEMES/hmrneves.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/posts/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy() | Require a Bearer Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "DELETE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/posts/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "4. Comments",
+			"item": [
+				{
+					"name": "store() | Require a Bearer Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "post_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "New comment.",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/comments/store",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"store"
+							]
+						},
+						"description": "require token"
+					},
+					"response": []
+				},
+				{
+					"name": "update() | Require a Bearer Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "New comment content...",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/comments/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy() | Require a Bearer Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "DELETE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/comments/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "5. Search Posts",
+			"item": [
+				{
+					"name": "By Title Keyword",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/api/v1/search/posts/by-keyword?keyword=lorem",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"search",
+								"posts",
+								"by-keyword"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "lorem"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By Cartegory ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/search/posts/by-category?category_id=1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"search",
+								"posts",
+								"by-category"
+							],
+							"query": [
+								{
+									"key": "category_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "6. Logs",
+			"item": [
+				{
+					"name": "Search logs by user_id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost/api/v1/logs/search?user_id=1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"logs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "7. Subscribers",
+			"item": [
+				{
+					"name": "index() | Get all Subscribers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/subscribers",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"subscribers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subscribe() | Register new subscriber",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODA5MzBlMDM2OTE1ZTA0OWEyZGNhN2RmNjc0ZWQ4MjcyMDg3NWNjNjdiNTRhNjIyZjNmYjEyMDY1ODViNTYyODU0NDViNTdiNTQzMzJhNGMiLCJpYXQiOjE1OTQwNzEwMTcsIm5iZiI6MTU5NDA3MTAxNywiZXhwIjoxNjI1NjA3MDE3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.knBzhZiUdQa3cADfhvs1thUdSLM59hFd58D25j5hDkx3K3v_C9ShOPdZ7rOkAqN1wYjtSkAznMNblsTVS6eU2WeWKxP7YQW3qnwf1deQ_VAQUxYclPerz6WtoystwCRiIYeEMT4g6F9JQ5sdMH2W1AWjei6bgsdfF1YRMIA_ha2J4yZ_D4wPvj29IQMmpQVoNjKaoeP7Y49ercJ2G7NWJViT2FCXMdG6FqkH4XX-FPL17shh-pJFvrG7nvoVyW3aAFM2kha_kmibGE2RC98J1i9p7ZnD75CUk-JY0Ny4Psv0uY6XDQqxzy4M4gA1y7V8Cv8I28MwTb7ONcv9OAuIB1CPtJYolG0BocFRBT7bV-RtCo6T5ym2Ue5EOr9h6WmkT8f8GiFcRL6RyKqkjX2WZjXIWlld6ulW-61WtCV2D84ioIi1yWJ6l9AZy2gPwFSRgimXOyo_Ow7ZHMyisNc4oVMYP3rNNybweQ-g23nThb1ztuT42IxgPjjAVT_we12hUWN2fWHChH9u4oFx8Mk7_QMvraapi9xV2zTBpmHoU9LcqChLIeMfBUbfQ2cCxu-mdTW4Whml_pvunXaYQdc0YDdMpAD4WAAsPDoOnL43Kb-JmUo8N55zauZLMmSuLsrhuDWTtvuFC8BBtUAqo5zki9A8i89ge5f9-ZoD3z6-ZHc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "hmrneves1/blog-api@github",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "gmail@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/subscribers",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"subscribers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "request_unsuscribe_token() | Get token to unsubscribe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "gmail@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/subscribers/request-unsubscribe-token",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"subscribers",
+								"request-unsubscribe-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unsubscribeByToken() | Take token and Email and delete subscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "gmail@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "8865f06173638279",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/subscribers/unsubscribe-by-token",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"subscribers",
+								"unsubscribe-by-token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTI1ZmQ4MmMyYmNhNDg1YzQ4YWJlMTQyNTE4MmYwOWRiNTk3YzE3ZjE0ZWIwNjU1ZDM5NDYwZThkNTljYWVhMmRjNDEzYjNkNTZiOWJmYjYiLCJpYXQiOjE1OTQyMzQ0MzUsIm5iZiI6MTU5NDIzNDQzNSwiZXhwIjoxNTk2OTEyODM1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KbTInnvpCwm_9_qgduK0gVbwA33Rz5Mf5EXNjcRgHHC5KtSyP3swW5ZA7_YmNuCybV7Zha33aiu9tK19X8qgLWHHjdV4JWJek6nHvR_aRGzVpcScnjP0h0JWBt--T6eRu11vOZh4BXwy-kTOepGTorsK5qmtQvdfGY0tMcRBAQ0JhcaMGA6Ro3wiiP7MR7sr6vXFXKaAGopZb-6cwg82HWzIImS623K2f1hfWPwcWi6-KGDU0XYklys90kn6UUCthVG5o1-_C0r0UVZIFc34jz2G8yWtChoDXt-g8K85Efjn1aCEwkWHP7To1al6AD5f0M5a1VRCUbXxseXAA8cSG14suMqB_toAI_O240EgOKbXmaVZWO0oRYxgQoq7qnETIx-2OfyXtyTxoUM5MdN-OO-SJWCYDKnhxHbfhyVchLI-KSrFV_YhZ6w9LWKuzYFxCAHyaiDZA62AMWf6W0NysasoTfrN9H1-YM52D8TRhtqjpfxxWw8hP2wusYy8eVgd0XCWyPqKaGjydbq7gmACNNMXx_qO48ovL8cTEo_EbXzg2xpTv7VnRz-tkL0wYEghdF3gbhXUB1HWuQrCh2XIgm5tv3Cx7fnY_BA5VISKeG8x5J3-peL9Y3yZUicMnr5sCW-d3xjq4wnGEEZRS1JMA0AiJNl_22JkgChYIt_g10w",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cf8d8db3-2ac6-4ca1-83cc-aa5244a977f1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d28a6a56-6aaf-4db7-b106-7f5895d92733",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
