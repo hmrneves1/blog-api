@@ -25,7 +25,6 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->default('default.png')->nullable()->comment('Avatar file name.');
             $table->string('bio', 512)->nullable()->comment('User biography.');
             $table->unsignedBigInteger('group_id')->default(2)->comment('Foreign key related to tbl_users_groups.group_id.');
-            $table->unsignedBigInteger('rank_id')->default(1)->comment('Foreign key related to tbl_users_ranks.rank_id.');
             $table->rememberToken();
             $table->timestamps();
         });

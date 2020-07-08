@@ -107,16 +107,6 @@ class User extends Authenticatable implements MustVerifyEmailAlias
     }
 
     /**
-     * Returns the rank of an user
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function rank()
-    {
-        return $this->hasOne('App\Models\Api\v1\users\UsersRanks', 'rank_id', 'rank_id');
-    }
-
-    /**
      * Returns all posts associated to an user
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -124,5 +114,35 @@ class User extends Authenticatable implements MustVerifyEmailAlias
     public function posts()
     {
         return $this->hasMany('App\Models\Api\v1\Posts\Posts', 'user_id', 'user_id');
+    }
+
+    /**
+     * Returns all comments associated to an user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Api\v1\Comments\PostsComments', 'user_id', 'user_id');
+    }
+
+    /**
+     * Returns all pending posts for the given user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pending_posts()
+    {
+        return $this->hasMany('App\Models\Api\v1\Posts\PendingPosts', 'user_id', 'user_id');
+    }
+
+    /**
+     * Returns all pending comments for the given user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pending_comments()
+    {
+        return $this->hasMany('App\Api\v1\Comments\PendingComments', 'user_id', 'user_id');
     }
 }

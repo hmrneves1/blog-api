@@ -1,10 +1,14 @@
 <?php
 
+use App\Models\Api\v1\Comments\AutoAcceptComments;
+use App\Models\Api\v1\Posts\AutoAcceptPosts;
 use App\User;
 use App\UserGroup;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 class CreateDefaultTableValues extends Migration
@@ -62,9 +66,18 @@ class CreateDefaultTableValues extends Migration
             'email' => 'admin@admin.com',
             'password' => Hash::make('password'),
             'group_id' => 1,
-            'rank_id' => 5,
             'created_at' => now(),
             'updated_at' => now(),
+        ]);
+
+        // How many comment the user should have for his comments be auto accepted
+        AutoAcceptComments::create([
+            'min_comments' => 10,
+        ]);
+
+        // How many posts the user should have for his comments be auto accepted
+        AutoAcceptPosts::create([
+            'min_posts' => 3,
         ]);
 
         // Default Passport keys

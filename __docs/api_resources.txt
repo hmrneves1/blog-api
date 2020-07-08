@@ -1,2 +1,0 @@
-php artisan make:resource Api/v1/CategoriesResource
-php artisan make:resource Api/v1/PostsResource

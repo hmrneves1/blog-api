@@ -35,4 +35,21 @@ class LogoutController extends Controller
         // return error response
         return $this->response(false, 500, config('http_responses.500'), []);
     }
+
+
+
+    public function logout_all_devices(Request $request)
+    {
+        // Get all tokens from the user
+        $tokens = $request->user()->tokens;
+
+        // Delete all tokens
+        foreach ($tokens as $token)
+        {
+            $token->delete();
+        }
+
+        // return response
+        return $this->response(true, 200, config('http_responses.200'), []);
+    }
 }

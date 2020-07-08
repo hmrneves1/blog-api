@@ -55,6 +55,7 @@ Route::middleware(['auth:api'])->group(function () {
      * Authentication routes that the users needs to be authenticated
      */
     Route::post('/auth/logout', 'Auth\LogoutController@logout');
+    Route::post('/auth/logout-all-devices', 'Auth\LogoutController@logout_all_devices');
 
     /**
      * Collection of routes that requires the user to be Administrator, group_id 1
@@ -83,6 +84,22 @@ Route::middleware(['auth:api'])->group(function () {
          * Logs Routes
          */
         Route::get('/logs/search', 'Logs\LogsController@logs_by_user_id');
+
+
+        /**
+         * Administration Routes - Posts
+         */
+        Route::get('/administration/manage-posts/posts', 'Posts\PostsController@index');
+        Route::get('/administration/manage-posts/pending-posts', 'Administration\Posts\ManagePostsController@pending_posts');
+        Route::post('/administration/manage-posts/pending-posts/approve', 'Administration\Posts\ManagePostsController@approve_post');
+        Route::post('/administration/manage-posts/pending-posts/delete', 'Administration\Posts\ManagePostsController@delete_pending_post');
+
+        /**
+         * Administration Routes - Comments
+         */
+        Route::get('/administration/manage-comments/pending-comments', 'Administration\Comments\ManageCommentsController@comments');
+        Route::post('/administration/manage-comments/pending-comments/approve', 'Administration\Comments\ManageCommentsController@approve');
+        Route::post('/administration/manage-comments/pending-comments/delete', 'Administration\Comments\ManageCommentsController@delete');
     });
 
     /**

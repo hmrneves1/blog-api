@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\v1\Posts\StoreNewPost;
 use App\Http\Requests\Api\v1\Posts\UpdatePost;
 use App\Models\Api\v1\Categories\Categories;
+use App\Models\Api\v1\Posts\AutoAcceptPosts;
+use App\Models\Api\v1\Posts\PendingPosts;
 use App\Models\Api\v1\Posts\Posts;
 use App\Traits\Api\v1\ApiResponse;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -22,10 +25,30 @@ class PostsController extends Controller
     use ApiResponse;
 
     /**
+     * Get the minimum posts value for the post be auto accepted
+     *
+     * @return mixed
+     */
+    private function auto_accept_number()
+    {
+        return AutoAcceptPosts::findOrFail(1)->min_posts;
+    }
+
+    /**
+     * Get the number of posts from the logged user
+     *
+     * @return mixed
+     */
+    private function user_posts_count()
+    {
+        return auth()->user()->posts->count();
+    }
+
+    /**
      * Returns all posts with author data
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
         // Get all posts
         $posts = Posts::with('author')->paginate(5);
@@ -61,7 +84,18 @@ class PostsController extends Controller
         // Store the post
         // The function sluggable() with handle the slug for this post
         // Remainder that the slugs should be unique
-        $post = Posts::create($validated_data);
+        /**
+         * Store the post
+         * * Notes
+         * * * 1. The function sluggable() with handle the slug for this post
+         * * * 2. Validate where the post should be stored by the number of accepted posts
+         */
+        if ($this->user_posts_count() >= $this->auto_accept_number())
+        {
+            $post = Posts::create($validated_data);
+        } else {
+            $post = PendingPosts::create($validated_data);
+        }
 
         // Check if the post was stored successfully
         if ($post)

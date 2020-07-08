@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Rennokki\QueryCache\Traits\QueryCacheable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class PostsComments extends Model
+class PendingComments extends Model
 {
     /**
      * Rennokki\QueryCache\Traits\QueryCacheable
@@ -57,7 +57,7 @@ class PostsComments extends Model
     /**
      * Model Table Name
      */
-    protected $table = 'tbl_posts_comments';
+    protected $table = 'tbl_pending_comments';
 
     /**
      * Model Primary Key

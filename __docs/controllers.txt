@@ -1,2 +1,0 @@
-php artisan make:controller Api/v1/CategoriesController --resource
-php artisan make:controller Api/v1/PostsController --resource

@@ -1,17 +1,23 @@
 <?php
 
-namespace App\Models\Api\v1\Comments;
+namespace App\Models\Api\v1\Posts;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Rennokki\QueryCache\Traits\QueryCacheable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class PostsComments extends Model
+class PendingPosts extends Model
 {
     /**
      * Rennokki\QueryCache\Traits\QueryCacheable
      */
     use QueryCacheable;
+
+    /**
+     * Cviebrock\EloquentSluggable\Sluggable
+     */
+    use Sluggable;
 
     /**
      * Rennokki\QueryCache\Traits\QueryCacheable
@@ -52,17 +58,17 @@ class PostsComments extends Model
      *
      * Defines the log name
      */
-    protected static $logName = "Posts Comments";
+    protected static $logName = "Pending Posts";
 
     /**
      * Model Table Name
      */
-    protected $table = 'tbl_posts_comments';
+    protected $table = 'tbl_pending_posts';
 
     /**
      * Model Primary Key
      */
-    protected $primaryKey = 'comment_id';
+    protected $primaryKey = 'post_id';
 
     /**
      * The attributes that are mass assignable.
@@ -70,11 +76,25 @@ class PostsComments extends Model
      * @var array
      */
     protected $fillable = [
-        'post_id', 'user_id', 'comment', 'parent_id'
+        'user_id', 'title', 'body', 'image', 'slug',
     ];
 
     /**
-     * Returns the comment author
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
+    /**
+     * Returns the post author
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -84,23 +104,12 @@ class PostsComments extends Model
     }
 
     /**
-     * Returns the post associated to a comment
+     * Returns all categories associated to a post
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function post()
+    public function categories()
     {
-        return $this->belongsTo('App\Models\Posts\Posts', 'post_id', 'post_id');
-    }
-
-    /**
-     * Returns the replies to a single comment
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function comment_replies()
-    {
-        return $this->hasMany('App\Models\Api\v1\Comments\PostsComments', 'parent_id', 'comment_id');
+        return $this->belongsToMany('App\Models\Api\v1\Categories\Categories', 'posts_hasmany_categories', 'post_id', 'category_id');
     }
 }
-

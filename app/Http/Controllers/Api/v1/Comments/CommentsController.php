@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\v1\Comments;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\v1\Comments\EditComment;
 use App\Http\Requests\Api\v1\Comments\StoreNewComment;
+use App\Models\Api\v1\Comments\AutoAcceptComments;
+use App\Models\Api\v1\Comments\PendingComments;
 use App\Models\Api\v1\Comments\PostsComments;
 use App\Traits\Api\v1\ApiResponse;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -20,6 +22,26 @@ class CommentsController extends Controller
     use ApiResponse;
 
     /**
+     * Get the minimum comments value for the comments be auto accepted
+     *
+     * @return mixed
+     */
+    private function auto_accept_number()
+    {
+        return AutoAcceptComments::findOrFail(1)->min_comments;
+    }
+
+    /**
+     * Get the number of comments from the logged user
+     *
+     * @return mixed
+     */
+    private function user_comments_count()
+    {
+        return auth()->user()->comments->count();
+    }
+
+    /**
      * Stores a new comment
      *
      * @param StoreNewComment $request
@@ -33,8 +55,18 @@ class CommentsController extends Controller
         // Set the user_id on the $validated_data
         $validated_data['user_id'] = Auth::user()->user_id;
 
-        // Store the comment
-        $comment_stored = PostsComments::create($validated_data);
+        /**
+         * Store the comment
+         *
+         * * Note
+         * * * Validate if the user has the required minimum comment count for the comment be auto accepted
+         */
+        if ($this->user_comments_count() >= $this->auto_accept_number())
+        {
+            $comment_stored = PostsComments::create($validated_data);
+        } else {
+            $comment_stored = PendingComments::create($validated_data);
+        }
 
         // Check if the comment was stored
         if ($comment_stored)

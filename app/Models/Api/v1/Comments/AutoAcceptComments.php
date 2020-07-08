@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Rennokki\QueryCache\Traits\QueryCacheable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class PostsComments extends Model
+class AutoAcceptComments extends Model
 {
     /**
      * Rennokki\QueryCache\Traits\QueryCacheable
@@ -52,17 +52,17 @@ class PostsComments extends Model
      *
      * Defines the log name
      */
-    protected static $logName = "Posts Comments";
+    protected static $logName = "Auto Accept Comments";
 
     /**
      * Model Table Name
      */
-    protected $table = 'tbl_posts_comments';
+    protected $table = 'tbl_auto_accept_comments';
 
     /**
      * Model Primary Key
      */
-    protected $primaryKey = 'comment_id';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -70,37 +70,7 @@ class PostsComments extends Model
      * @var array
      */
     protected $fillable = [
-        'post_id', 'user_id', 'comment', 'parent_id'
+        'min_comments'
     ];
-
-    /**
-     * Returns the comment author
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function author()
-    {
-        return $this->belongsTo('App\User', 'user_id', 'user_id');
-    }
-
-    /**
-     * Returns the post associated to a comment
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function post()
-    {
-        return $this->belongsTo('App\Models\Posts\Posts', 'post_id', 'post_id');
-    }
-
-    /**
-     * Returns the replies to a single comment
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function comment_replies()
-    {
-        return $this->hasMany('App\Models\Api\v1\Comments\PostsComments', 'parent_id', 'comment_id');
-    }
 }
 

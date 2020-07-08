@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\Api\v1\Comments;
+namespace App\Models\Api\v1\Posts;
 
 use Illuminate\Database\Eloquent\Model;
 use Rennokki\QueryCache\Traits\QueryCacheable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class PostsUnacceptedComments extends Model
+class AutoAcceptPosts extends Model
 {
     /**
      * Rennokki\QueryCache\Traits\QueryCacheable
@@ -52,17 +52,17 @@ class PostsUnacceptedComments extends Model
      *
      * Defines the log name
      */
-    protected static $logName = "Posts Comments - Unaccepted";
+    protected static $logName = "Auto Accept Posts";
 
     /**
      * Model Table Name
      */
-    protected $table = 'tbl_unaccepted_comments';
+    protected $table = 'tbl_auto_accept_posts';
 
     /**
      * Model Primary Key
      */
-    protected $primaryKey = 'comment_id';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -70,7 +70,6 @@ class PostsUnacceptedComments extends Model
      * @var array
      */
     protected $fillable = [
-        'post_id', 'user_id', 'comment'
+        'min_posts'
     ];
 }
-

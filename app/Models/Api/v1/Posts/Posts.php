@@ -94,7 +94,7 @@ class Posts extends Model
     }
 
     /**
-     * Returns the author (user) associated to a post
+     * Returns the post author
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

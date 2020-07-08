@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUnacceptedCommentsTable extends Migration
+class CreatePendingCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateUnacceptedCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_unaccepted_comments', function (Blueprint $table) {
+        Schema::create('tbl_pending_comments', function (Blueprint $table) {
             $table->bigIncrements('comment_id');
             $table->unsignedBigInteger('post_id')->comment('Foreign Key related to tbl_posts.post_id');
             $table->unsignedBigInteger('user_id')->comment('Who commented.');
             $table->text('comment')->comment('Comment.');
+            $table->unsignedBigInteger('parent_id')->nullable()->comment('Parent associated to a comment. Basically a reply to a comment.');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateUnacceptedCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_unaccepted_comments');
+        Schema::dropIfExists('tbl_pending_comments');
     }
 }

@@ -1,0 +1,805 @@
+{
+    "variables": [],
+    "info": {
+        "name": "hmrneves1\/blog-api@github API",
+        "_postman_id": "b5828149-d85e-41a6-8f2a-563d75eb0dad",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Categories",
+            "description": "\nBasic CRUD for posts categories",
+            "item": [
+                {
+                    "name": "All Categories",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/categories",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/categories"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "Returns all available categories",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Show one Category",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/categories\/:category_id",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/categories\/:category_id"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "Show data from a specific category",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Stores a New Category",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/categories",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/categories"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"consequuntur\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "Store a new category into the database",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update Category",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/categories\/:comment_id",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/categories\/:comment_id"
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"odit\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "Updates data from a specific category",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Delete Category",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/categories\/:comment_id",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/categories\/:comment_id"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "Removes a specific category from the database",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Register method",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/auth\/register",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/auth\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"consectetur\",\n    \"user_name\": \"exercitationem\",\n    \"password\": \"dicta\",\n    \"password_confirm\": \"nam\",\n    \"email\": \"koch.jeffrey@example.com\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Login method",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/auth\/login",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"juliana19@example.net\",\n    \"password\": \"nulla\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Returns all posts with author data",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/posts",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/posts"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Returns post data, plus author, comments and categories",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/posts\/:slug",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/posts\/:slug"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Search posts by keyword",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/search\/posts\/by-keyword",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/search\/posts\/by-keyword"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Search posts by category id",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/search\/posts\/by-category",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/search\/posts\/by-category"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/subscribers",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/subscribers"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"user_id\": 439473.5204,\n    \"name\": \"nemo\",\n    \"email\": \"novella53@example.org\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Generate a new token to be used to unsubscribe",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/subscribers\/request-unsubscribe-token",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/subscribers\/request-unsubscribe-token"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"angel48@example.com\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Unsubscribe an user by Email and Token provided in the email",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/subscribers\/unsubscribe-by-token",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/subscribers\/unsubscribe-by-token"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"token\": \"temporibus\",\n    \"email\": \"connor30@example.com\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Logout method",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/auth\/logout",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/auth\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Stores a new post into the database",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/posts",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/posts"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"user_id\": 195342.755,\n    \"title\": \"atque\",\n    \"body\": \"sint\",\n    \"image\": {}\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Updates data from a specific post",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/posts\/:post_id",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/posts\/:post_id"
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"corporis\",\n    \"body\": \"est\",\n    \"image\": {}\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Removes a specific post from the database",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/posts\/:post_id",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/posts\/:post_id"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/subscribers",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/subscribers"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Returns all logs from a specific user",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/logs\/search",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/logs\/search"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Stores a new comment",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/comments\/store",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/comments\/store"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"post_id\": 3539646.3580202,\n    \"comment\": \"consectetur\",\n    \"parent_id\": 3628679.8899369\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Updates data from a specific comment",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/comments\/:comment_id",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/comments\/:comment_id"
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"comment\": \"aliquid\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Removes a specific comment from the database",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "localhost",
+                            "path": "api\/v1\/comments\/:comment_id",
+                            "query": [],
+                            "raw": "https:\/\/localhost\/api\/v1\/comments\/:comment_id"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        }
+    ]
+}
