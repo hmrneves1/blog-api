@@ -7,6 +7,9 @@ use App\Traits\Api\v1\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * @group Authentication
+ */
 class LogoutController extends Controller
 {
     /**
@@ -15,7 +18,7 @@ class LogoutController extends Controller
     use ApiResponse;
 
     /**
-     * Logout method
+     * Logout user device
      *
      * @param Request $request
      * @return string
@@ -36,8 +39,9 @@ class LogoutController extends Controller
         return $this->response(false, 500, config('http_responses.500'), []);
     }
 
-
-
+    /**
+     * Logout all user devices
+     */
     public function logout_all_devices(Request $request)
     {
         // Get all tokens from the user

@@ -14,6 +14,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
+/**
+ * @group Post Comments
+ */
 class CommentsController extends Controller
 {
     /**
@@ -42,7 +45,7 @@ class CommentsController extends Controller
     }
 
     /**
-     * Stores a new comment
+     * Create
      *
      * @param StoreNewComment $request
      * @return \Illuminate\Http\JsonResponse
@@ -80,7 +83,7 @@ class CommentsController extends Controller
     }
 
     /**
-     * Updates data from a specific comment
+     * Update
      *
      * @param EditComment $request
      * @param $comment_id
@@ -125,7 +128,7 @@ class CommentsController extends Controller
     }
 
     /**
-     * Removes a specific comment from the database
+     * Delete
      *
      * @param $comment_id
      * @return \Illuminate\Http\JsonResponse

@@ -7,6 +7,9 @@ use App\Traits\Api\v1\ApiResponse;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
 
+/**
+ * @group Logs
+ */
 class LogsController extends Controller
 {
     /**
@@ -15,15 +18,12 @@ class LogsController extends Controller
     use ApiResponse;
 
     /**
-     * Returns all logs from a specific user
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * Get user logs
      */
-    public function logs_by_user_id(Request $request)
+    public function logs_by_user_id($user_id)
     {
         // Get user logs
-        $logs = Activity::where('causer_id', '=', $request->user_id)->get();
+        $logs = Activity::where('causer_id', '=', $user_id)->orderBy('id', 'desc')->get();
 
         // Return logs
         return $this->response(true, 200, config('http_responses.200'), $logs);

@@ -36,8 +36,8 @@ Route::get('/posts/{slug}', 'Posts\PostsController@show');
 /**
  * Public routes to search for posts
  */
-Route::get('/search/posts/by-keyword', 'Posts\PostsController@search_posts_by_keyword');
-Route::get('/search/posts/by-category', 'Posts\PostsController@search_posts_by_category');
+Route::get('/search/posts/by-keyword/{keyword}', 'Posts\PostsController@search_posts_by_keyword');
+Route::get('/search/posts/by-category/{category_id}', 'Posts\PostsController@search_posts_by_category');
 
 /**
  * Public routes to subscribe
@@ -45,7 +45,6 @@ Route::get('/search/posts/by-category', 'Posts\PostsController@search_posts_by_c
 Route::post('/subscribers', 'Subscribers\SubscribersController@subscribe');
 Route::post('/subscribers/request-unsubscribe-token', 'Subscribers\SubscribersController@request_unsuscribe_token');
 Route::post('/subscribers/unsubscribe-by-token', 'Subscribers\SubscribersController@unsubscribeByToken');
-
 
 /**
  * Collection of routes that requires authentication via token
@@ -83,8 +82,7 @@ Route::middleware(['auth:api'])->group(function () {
         /**
          * Logs Routes
          */
-        Route::get('/logs/search', 'Logs\LogsController@logs_by_user_id');
-
+        Route::get('/logs/search/{user_id}', 'Logs\LogsController@logs_by_user_id');
 
         /**
          * Administration Routes - Posts
@@ -100,6 +98,19 @@ Route::middleware(['auth:api'])->group(function () {
         Route::get('/administration/manage-comments/pending-comments', 'Administration\Comments\ManageCommentsController@comments');
         Route::post('/administration/manage-comments/pending-comments/approve', 'Administration\Comments\ManageCommentsController@approve');
         Route::post('/administration/manage-comments/pending-comments/delete', 'Administration\Comments\ManageCommentsController@delete');
+
+        /**
+         * Administration Routes - Users
+         */
+        Route::get('/administration/manage-users/list-users', 'Administration\Users\UsersController@list_users');
+        Route::get('/administration/manage-users/list-user-posts', 'Administration\Users\UsersController@list_user_posts');
+        Route::get('/administration/manage-users/list-user-comments', 'Administration\Users\UsersController@list_user_comments');
+        Route::post('/administration/manage-users/update-user-group', 'Administration\Users\UsersController@update_user_group');
+
+        /**
+         * Administration Routes - Groups
+         */
+        Route::get('/administration/manage-user-groups/list-groups', 'Administration\UserGroups\UserGroupsController@index');
     });
 
     /**
@@ -108,6 +119,14 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('/comments/store', 'Comments\CommentsController@store');
     Route::put('/comments/{comment_id}', 'Comments\CommentsController@update');
     Route::delete('/comments/{comment_id}', 'Comments\CommentsController@destroy');
+
+    /**
+     * Users
+     */
+    Route::get('/users/{user_id}', 'Users\UsersController@index');
+    Route::post('/users/update-email', 'Users\UsersController@update_email');
+    Route::post('/users/update-password', 'Users\UsersController@update_password');
+    Route::post('/users/update-avatar', 'Users\UsersController@update_avatar');
 });
 
 

@@ -43,18 +43,514 @@
                             <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: July 8 2020</li>
+            <li>Last updated: July 9 2020</li>
         </ul>
 </div>
 <div class="page-wrapper">
     <div class="dark-box"></div>
     <div class="content">
         <h1>Introduction</h1>
-<p>Welcome to our API documentation!</p>
+<p>Wlcome to hmrneves1/blog-api documentation.</p>
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile), and you can switch the programming language of the examples with the tabs in the top right (or from the nav menu at the top left on mobile).</aside><h1>Authenticating requests</h1>
-<p>This API is not authenticated.</p><h1>Categories</h1>
-<p>Basic CRUD for posts categories</p>
-<h2>All Categories</h2>
+<p>This API is not authenticated.</p><h1>Administration - Pending Comments</h1>
+<h2>List all pending comments</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "https://localhost/api/v1/administration/manage-comments/pending-comments" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-comments/pending-comments"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-green">GET</small>
+<strong><code>api/v1/administration/manage-comments/pending-comments</code></strong></p>
+<h2>Approve pending comment</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/administration/manage-comments/pending-comments/approve" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-comments/pending-comments/approve"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/administration/manage-comments/pending-comments/approve</code></strong></p>
+<h2>Delete a pending comment</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/administration/manage-comments/pending-comments/delete" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-comments/pending-comments/delete"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/administration/manage-comments/pending-comments/delete</code></strong></p><h1>Administration - Pending Posts</h1>
+<h2>List all pending posts</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "https://localhost/api/v1/administration/manage-posts/pending-posts" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-posts/pending-posts"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-green">GET</small>
+<strong><code>api/v1/administration/manage-posts/pending-posts</code></strong></p>
+<h2>Approve a pending post</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/administration/manage-posts/pending-posts/approve" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-posts/pending-posts/approve"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/administration/manage-posts/pending-posts/approve</code></strong></p>
+<h2>Delete a pending posts</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/administration/manage-posts/pending-posts/delete" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-posts/pending-posts/delete"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/administration/manage-posts/pending-posts/delete</code></strong></p><h1>Administration - User Groups</h1>
+<h2>Get all possible users groups</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "https://localhost/api/v1/administration/manage-user-groups/list-groups" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-user-groups/list-groups"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-green">GET</small>
+<strong><code>api/v1/administration/manage-user-groups/list-groups</code></strong></p><h1>Administration - Users</h1>
+<h2>List all users</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "https://localhost/api/v1/administration/manage-users/list-users" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-users/list-users"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-green">GET</small>
+<strong><code>api/v1/administration/manage-users/list-users</code></strong></p>
+<h2>Returns posts from a given user</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "https://localhost/api/v1/administration/manage-users/list-user-posts" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_id":4,"limit":150038.3276333,"order_by":"desc"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-users/list-user-posts"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": 4,
+    "limit": 150038.3276333,
+    "order_by": "desc"
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-green">GET</small>
+<strong><code>api/v1/administration/manage-users/list-user-posts</code></strong></p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p><code><b>user_id</b></code>&nbsp; <small>number</small>     <br></p>
+<p><code><b>limit</b></code>&nbsp; <small>number</small>     <br></p>
+<p><code><b>order_by</b></code>&nbsp; <small>string</small>     <br>
+The value must be one of <code>asc</code> or <code>desc</code>.</p>
+<h2>Returns comments from a given user</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "https://localhost/api/v1/administration/manage-users/list-user-comments" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_id":1847.573755,"limit":3150226.274,"order_by":"desc"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-users/list-user-comments"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": 1847.573755,
+    "limit": 3150226.274,
+    "order_by": "desc"
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-green">GET</small>
+<strong><code>api/v1/administration/manage-users/list-user-comments</code></strong></p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p><code><b>user_id</b></code>&nbsp; <small>number</small>     <br></p>
+<p><code><b>limit</b></code>&nbsp; <small>number</small>     <br></p>
+<p><code><b>order_by</b></code>&nbsp; <small>string</small>     <br>
+The value must be one of <code>asc</code> or <code>desc</code>.</p>
+<h2>Update user group</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/administration/manage-users/update-user-group" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_id":279,"group_id":561587904}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-users/update-user-group"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": 279,
+    "group_id": 561587904
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/administration/manage-users/update-user-group</code></strong></p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p><code><b>user_id</b></code>&nbsp; <small>number</small>     <br></p>
+<p><code><b>group_id</b></code>&nbsp; <small>number</small>     <br></p><h1>Authentication</h1>
+<p>Authentication methods.</p>
+<h2>Register</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/auth/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"name":"dolore","user_name":"repellendus","password":"voluptas","password_confirm":"quia","email":"ghaag@example.org"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/auth/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "dolore",
+    "user_name": "repellendus",
+    "password": "voluptas",
+    "password_confirm": "quia",
+    "email": "ghaag@example.org"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/auth/register</code></strong></p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p><code><b>name</b></code>&nbsp; <small>string</small>     <br></p>
+<p><code><b>user_name</b></code>&nbsp; <small>string</small>     <br></p>
+<p><code><b>password</b></code>&nbsp; <small>string</small>     <br></p>
+<p><code><b>password_confirm</b></code>&nbsp; <small>string</small>     <br></p>
+<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
+The value must be a valid email address.</p>
+<h2>Login</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/auth/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"ayla37@example.com","password":"enim"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/auth/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "ayla37@example.com",
+    "password": "enim"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/auth/login</code></strong></p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
+The value must be a valid email address.</p>
+<p><code><b>password</b></code>&nbsp; <small>string</small>     <br></p>
+<h2>Logout user device</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/auth/logout" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/auth/logout"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/auth/logout</code></strong></p>
+<h2>Logout all user devices</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/auth/logout-all-devices" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/auth/logout-all-devices"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/auth/logout-all-devices</code></strong></p><h1>Categories</h1>
+<p>Managing categories.</p>
+<h2>Get All Categories</h2>
 <p>Returns all available categories</p>
 <blockquote>
 <p>Example request:</p>
@@ -90,110 +586,110 @@ fetch(url, {
             {
                 "category_id": 1,
                 "name": "PHP",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 2,
                 "name": "Laravel",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 3,
                 "name": "Life",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 4,
                 "name": "Playstation",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 5,
                 "name": "MySQL",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 6,
                 "name": "Games",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 7,
                 "name": "Development",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 8,
                 "name": "Ajax",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 9,
                 "name": "Laracon",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 10,
                 "name": "Twitter",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 11,
                 "name": "Xamp",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 12,
                 "name": "Github",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 13,
                 "name": "Laragon",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 14,
                 "name": "Bootstrap",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 15,
                 "name": "Templates",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 16,
                 "name": "Enduro",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 17,
                 "name": "Yamaha",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             },
             {
                 "category_id": 18,
                 "name": "Motocross",
-                "created_at": "2020-07-08T19:13:50.000000Z",
-                "updated_at": "2020-07-08T19:13:50.000000Z"
+                "created_at": "2020-07-09T17:38:31.000000Z",
+                "updated_at": "2020-07-09T17:38:31.000000Z"
             }
         ]
     }
@@ -201,7 +697,7 @@ fetch(url, {
 <h3>Request</h3>
 <p><small class="badge badge-green">GET</small>
 <strong><code>api/v1/categories</code></strong></p>
-<h2>Show one Category</h2>
+<h2>Read</h2>
 <p>Show data from a specific category</p>
 <blockquote>
 <p>Example request:</p>
@@ -236,15 +732,15 @@ fetch(url, {
         "data": {
             "category_id": 1,
             "name": "PHP",
-            "created_at": "2020-07-08T19:13:50.000000Z",
-            "updated_at": "2020-07-08T19:13:50.000000Z"
+            "created_at": "2020-07-09T17:38:31.000000Z",
+            "updated_at": "2020-07-09T17:38:31.000000Z"
         }
     }
 }</code></pre>
 <h3>Request</h3>
 <p><small class="badge badge-green">GET</small>
 <strong><code>api/v1/categories/{category_id}</code></strong></p>
-<h2>Stores a New Category</h2>
+<h2>Create</h2>
 <p>Store a new category into the database</p>
 <blockquote>
 <p>Example request:</p>
@@ -253,7 +749,7 @@ fetch(url, {
     "https://localhost/api/v1/categories" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"consequuntur"}'
+    -d '{"name":"mollitia"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "https://localhost/api/v1/categories"
@@ -265,7 +761,7 @@ let headers = {
 };
 
 let body = {
-    "name": "consequuntur"
+    "name": "mollitia"
 }
 
 fetch(url, {
@@ -280,7 +776,7 @@ fetch(url, {
 <strong><code>api/v1/categories</code></strong></p>
 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
 <p><code><b>name</b></code>&nbsp; <small>string</small>     <br></p>
-<h2>Update Category</h2>
+<h2>Update</h2>
 <p>Updates data from a specific category</p>
 <blockquote>
 <p>Example request:</p>
@@ -289,7 +785,7 @@ fetch(url, {
     "https://localhost/api/v1/categories/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"odit"}'
+    -d '{"name":"praesentium"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "https://localhost/api/v1/categories/1"
@@ -301,7 +797,7 @@ let headers = {
 };
 
 let body = {
-    "name": "odit"
+    "name": "praesentium"
 }
 
 fetch(url, {
@@ -316,7 +812,7 @@ fetch(url, {
 <strong><code>api/v1/categories/{comment_id}</code></strong></p>
 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
 <p><code><b>name</b></code>&nbsp; <small>string</small>     <br></p>
-<h2>Delete Category</h2>
+<h2>Delete</h2>
 <p>Removes a specific category from the database</p>
 <blockquote>
 <p>Example request:</p>
@@ -342,19 +838,51 @@ fetch(url, {
     .then(json =&gt; console.log(json));</code></pre>
 <h3>Request</h3>
 <p><small class="badge badge-red">DELETE</small>
-<strong><code>api/v1/categories/{comment_id}</code></strong></p><h1>Endpoints</h1>
-<h2>Register method</h2>
+<strong><code>api/v1/categories/{comment_id}</code></strong></p><h1>Logs</h1>
+<h2>Get user logs</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "https://localhost/api/v1/logs/search/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/logs/search/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-green">GET</small>
+<strong><code>api/v1/logs/search/{user_id}</code></strong></p><h1>Post Comments</h1>
+<h2>Create</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "https://localhost/api/v1/auth/register" \
+    "https://localhost/api/v1/comments/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"consectetur","user_name":"exercitationem","password":"dicta","password_confirm":"nam","email":"koch.jeffrey@example.com"}'
+    -d '{"post_id":280226.11405,"comment":"est","parent_id":547089.22}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/auth/register"
+    "https://localhost/api/v1/comments/store"
 );
 
 let headers = {
@@ -363,11 +891,9 @@ let headers = {
 };
 
 let body = {
-    "name": "consectetur",
-    "user_name": "exercitationem",
-    "password": "dicta",
-    "password_confirm": "nam",
-    "email": "koch.jeffrey@example.com"
+    "post_id": 280226.11405,
+    "comment": "est",
+    "parent_id": 547089.22
 }
 
 fetch(url, {
@@ -379,26 +905,23 @@ fetch(url, {
     .then(json =&gt; console.log(json));</code></pre>
 <h3>Request</h3>
 <p><small class="badge badge-black">POST</small>
-<strong><code>api/v1/auth/register</code></strong></p>
+<strong><code>api/v1/comments/store</code></strong></p>
 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-<p><code><b>name</b></code>&nbsp; <small>string</small>     <br></p>
-<p><code><b>user_name</b></code>&nbsp; <small>string</small>     <br></p>
-<p><code><b>password</b></code>&nbsp; <small>string</small>     <br></p>
-<p><code><b>password_confirm</b></code>&nbsp; <small>string</small>     <br></p>
-<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
-The value must be a valid email address.</p>
-<h2>Login method</h2>
+<p><code><b>post_id</b></code>&nbsp; <small>number</small>     <br></p>
+<p><code><b>comment</b></code>&nbsp; <small>string</small>     <br></p>
+<p><code><b>parent_id</b></code>&nbsp; <small>number</small>         <i>optional</i>    <br></p>
+<h2>Update</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "https://localhost/api/v1/auth/login" \
+<pre><code class="language-bash">curl -X PUT \
+    "https://localhost/api/v1/comments/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"juliana19@example.net","password":"nulla"}'
+    -d '{"comment":"eos"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/auth/login"
+    "https://localhost/api/v1/comments/1"
 );
 
 let headers = {
@@ -407,25 +930,48 @@ let headers = {
 };
 
 let body = {
-    "email": "juliana19@example.net",
-    "password": "nulla"
+    "comment": "eos"
 }
 
 fetch(url, {
-    method: "POST",
+    method: "PUT",
     headers: headers,
     body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <h3>Request</h3>
-<p><small class="badge badge-black">POST</small>
-<strong><code>api/v1/auth/login</code></strong></p>
+<p><small class="badge badge-darkblue">PUT</small>
+<strong><code>api/v1/comments/{comment_id}</code></strong></p>
 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
-The value must be a valid email address.</p>
-<p><code><b>password</b></code>&nbsp; <small>string</small>     <br></p>
-<h2>Returns all posts with author data</h2>
+<p><code><b>comment</b></code>&nbsp; <small>string</small>     <br></p>
+<h2>Delete</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "https://localhost/api/v1/comments/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/comments/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-red">DELETE</small>
+<strong><code>api/v1/comments/{comment_id}</code></strong></p><h1>Posts</h1>
+<h2>Get All Posts</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -460,138 +1006,133 @@ fetch(url, {
             "current_page": 1,
             "data": [
                 {
-                    "post_id": 1,
-                    "user_id": 5,
-                    "slug": "quidem-et-et-quis-ut-5176",
-                    "title": "Quidem et et quis ut. \/5176",
-                    "body": "Aliquam sequi dolor rerum deserunt fugiat sit molestiae beatae ut amet rerum mollitia ipsam ut assumenda ab assumenda sit inventore incidunt eaque distinctio ullam accusantium et omnis ea delectus amet quis accusantium tenetur ratione illo possimus voluptas saepe exercitationem est possimus non error dolorem accusantium doloribus ea corrupti voluptatem atque nemo eaque voluptas aspernatur aliquam repellendus ipsa debitis quisquam quis autem asperiores porro quibusdam ut non enim repellendus sit sunt est omnis qui harum est sapiente eum nulla consequuntur autem nobis consequatur magnam ipsum et odit autem magnam perspiciatis aut aut aut rem porro laudantium dignissimos ea numquam itaque temporibus est facere asperiores.",
-                    "image": "default.png",
-                    "created_at": "2020-07-08T19:13:51.000000Z",
-                    "updated_at": "2020-07-08T19:13:51.000000Z",
+                    "post_id": 51,
+                    "user_id": 1,
+                    "slug": "it-s-a-simple-test-on-app-posts-store",
+                    "title": "It's a simple test on App\\Posts::store()",
+                    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et sagittis mauris. Phasellus dolor ante.",
+                    "image": "5f0760e5ac1b4_20200709_072437.jpg",
+                    "created_at": "2020-07-09T18:24:37.000000Z",
+                    "updated_at": "2020-07-09T18:24:37.000000Z",
                     "author": {
-                        "user_id": 5,
-                        "name": "Liliana Marks V",
-                        "user_name": "little.jamaal",
-                        "email": "mueller.maria@example.com",
-                        "email_verified_at": "2020-07-08T19:13:51.000000Z",
-                        "avatar": "default.png",
+                        "user_id": 1,
+                        "name": "Administrator",
+                        "user_name": "admin",
+                        "email": "1233@mail.com",
+                        "email_verified_at": null,
+                        "avatar": "df98b568031a8f164d41b29ca63d73df065f8fda395531f5b1954c1573474452.png",
                         "bio": null,
-                        "group_id": 2,
-                        "rank_id": 1,
-                        "created_at": "2020-07-08T19:13:51.000000Z",
-                        "updated_at": "2020-07-08T19:13:51.000000Z"
+                        "group_id": 1,
+                        "created_at": "2020-07-09T17:38:31.000000Z",
+                        "updated_at": "2020-07-09T21:28:01.000000Z"
                     }
                 },
                 {
-                    "post_id": 2,
+                    "post_id": 50,
                     "user_id": 2,
-                    "slug": "nobis-natus-doloribus-ut-aliquam-quam-ea-cum-rerum-69413",
-                    "title": "Nobis natus doloribus ut aliquam quam ea cum rerum. \/69413",
-                    "body": "Eos et officia est amet tempora quam reprehenderit repellendus et consequatur sapiente commodi et aliquid sed sapiente qui voluptatem assumenda ut quam alias autem molestias saepe ipsam iste ut facere consequatur dolores et nihil repudiandae molestiae ut id eos voluptatum consequuntur id et est omnis suscipit eum quis quia consequatur maiores qui atque eos rerum consequuntur ducimus quia suscipit et sapiente quidem eum delectus ipsa facere quos voluptatibus ipsa est rem dolor aspernatur illo maiores cumque explicabo aut aliquam molestias sint omnis et earum qui ratione labore consequuntur vero quod.",
+                    "slug": "eligendi-voluptas-ut-aut-aut-molestiae-et-pariatur-75654",
+                    "title": "Eligendi voluptas ut aut aut molestiae et pariatur. \/75654",
+                    "body": "Dolorem eos ad amet quo explicabo ea eius consequatur et quia id ullam sunt qui voluptatem dolor et nisi saepe ut vero deserunt neque dolorem soluta cum non praesentium quia iste qui quae ratione natus ut nobis id dolore modi asperiores et placeat fuga impedit qui dolores sed nesciunt omnis cum sapiente blanditiis perferendis sit vel quam possimus omnis quia perferendis magni animi vero et magnam beatae illum veritatis atque necessitatibus sint sequi quo nesciunt provident debitis doloribus hic quas similique error cumque officia doloremque dicta aliquid dolores commodi autem quia voluptas adipisci soluta inventore consequuntur.",
                     "image": "default.png",
-                    "created_at": "2020-07-08T19:13:51.000000Z",
-                    "updated_at": "2020-07-08T19:13:51.000000Z",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
                     "author": {
                         "user_id": 2,
-                        "name": "Chance Parisian",
-                        "user_name": "boehm.harmon",
-                        "email": "kiara77@example.com",
-                        "email_verified_at": "2020-07-08T19:13:50.000000Z",
+                        "name": "Ivah Spencer",
+                        "user_name": "candida.rutherford",
+                        "email": "queenie.toy@example.com",
+                        "email_verified_at": "2020-07-09T17:38:31.000000Z",
                         "avatar": "default.png",
                         "bio": null,
                         "group_id": 2,
-                        "rank_id": 1,
-                        "created_at": "2020-07-08T19:13:51.000000Z",
-                        "updated_at": "2020-07-08T19:13:51.000000Z"
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
                     }
                 },
                 {
-                    "post_id": 3,
-                    "user_id": 5,
-                    "slug": "dolores-sapiente-dolorem-voluptates-necessitatibus-voluptatum-maiores-aut-21025",
-                    "title": "Dolores sapiente dolorem voluptates necessitatibus voluptatum maiores aut. \/21025",
-                    "body": "Qui laudantium sit qui aliquid autem sit enim maiores sit illo ipsam a incidunt qui iste nihil quod tempore atque ipsum qui qui repellat dolor saepe odio blanditiis fuga quia quaerat non enim qui repellat perspiciatis esse fugit consequatur est unde dolorum voluptas beatae ratione ex incidunt delectus minima qui aut fugiat ipsa at quas et qui autem eos magni enim doloribus qui et qui et sunt ullam maxime omnis rerum ea et aliquam qui molestias ut et dolor perspiciatis beatae vero qui dolor sunt et dignissimos sunt sed iusto animi aperiam aut voluptates officia ut voluptas unde quia.",
+                    "post_id": 49,
+                    "user_id": 7,
+                    "slug": "sed-veniam-et-ullam-sed-qui-quas-41015",
+                    "title": "Sed veniam et ullam sed qui quas. \/41015",
+                    "body": "Minus occaecati quibusdam earum incidunt accusamus cupiditate ex est provident id dolore veritatis itaque unde numquam sapiente veritatis sint consequatur rerum sit autem dolor hic optio maiores laboriosam et nemo laboriosam culpa distinctio provident qui perferendis nihil quis et soluta occaecati odit eaque ut fugit incidunt et voluptates animi autem explicabo voluptas consequatur sint dignissimos omnis quia omnis autem culpa iusto suscipit quia blanditiis non eos pariatur esse dolor sit ut quasi totam temporibus ducimus esse temporibus quia illo perspiciatis dignissimos distinctio porro id sapiente culpa ullam quia.",
                     "image": "default.png",
-                    "created_at": "2020-07-08T19:13:51.000000Z",
-                    "updated_at": "2020-07-08T19:13:51.000000Z",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
                     "author": {
-                        "user_id": 5,
-                        "name": "Liliana Marks V",
-                        "user_name": "little.jamaal",
-                        "email": "mueller.maria@example.com",
-                        "email_verified_at": "2020-07-08T19:13:51.000000Z",
+                        "user_id": 7,
+                        "name": "Jailyn Herzog",
+                        "user_name": "pink.senger",
+                        "email": "bernhard.rene@example.net",
+                        "email_verified_at": "2020-07-09T17:38:32.000000Z",
                         "avatar": "default.png",
                         "bio": null,
                         "group_id": 2,
-                        "rank_id": 1,
-                        "created_at": "2020-07-08T19:13:51.000000Z",
-                        "updated_at": "2020-07-08T19:13:51.000000Z"
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
                     }
                 },
                 {
-                    "post_id": 4,
-                    "user_id": 3,
-                    "slug": "eum-recusandae-iste-perspiciatis-fuga-eligendi-omnis-50763",
-                    "title": "Eum recusandae iste perspiciatis fuga eligendi omnis. \/50763",
-                    "body": "Voluptatum sunt et pariatur fugit impedit voluptates eos sed corporis laborum sint ut illo labore aut minima dolores odio vel ad similique expedita tempora qui rerum ipsum distinctio a enim voluptatem voluptatem error magni ad expedita voluptate saepe et ullam qui est repudiandae illum autem id occaecati eum veniam quasi dignissimos non id non aut sed aspernatur dolores dolore doloribus aliquam nam aspernatur nisi quae et illo architecto fuga suscipit voluptatem voluptas quis error earum.",
+                    "post_id": 48,
+                    "user_id": 9,
+                    "slug": "corporis-nihil-explicabo-earum-corrupti-facere-alias-amet-12990",
+                    "title": "Corporis nihil explicabo earum corrupti facere alias amet. \/12990",
+                    "body": "Ad non est quos beatae qui excepturi tempora culpa qui rem modi animi quia nostrum hic praesentium est voluptates corporis quibusdam culpa id earum assumenda eius quia qui maiores earum eaque placeat iure veniam soluta ea nulla id quo autem perferendis eum sit qui asperiores ut quae sint iste minus in sunt id qui rerum amet architecto quis ut rerum doloremque omnis et sapiente ut laudantium incidunt suscipit quo id ut qui sit ab sapiente deleniti dolores at et aut corrupti facere animi sed consequatur nihil dolorum facilis laboriosam.",
                     "image": "default.png",
-                    "created_at": "2020-07-08T19:13:51.000000Z",
-                    "updated_at": "2020-07-08T19:13:51.000000Z",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
                     "author": {
-                        "user_id": 3,
-                        "name": "Bennie Cole",
-                        "user_name": "cortez.stamm",
-                        "email": "maximo77@example.net",
-                        "email_verified_at": "2020-07-08T19:13:51.000000Z",
+                        "user_id": 9,
+                        "name": "Antonette Dickens",
+                        "user_name": "alia59",
+                        "email": "wisoky.billy@example.com",
+                        "email_verified_at": "2020-07-09T17:38:32.000000Z",
                         "avatar": "default.png",
                         "bio": null,
                         "group_id": 2,
-                        "rank_id": 1,
-                        "created_at": "2020-07-08T19:13:51.000000Z",
-                        "updated_at": "2020-07-08T19:13:51.000000Z"
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
                     }
                 },
                 {
-                    "post_id": 5,
-                    "user_id": 2,
-                    "slug": "eum-nisi-officiis-inventore-14215",
-                    "title": "Eum nisi officiis inventore. \/14215",
-                    "body": "Sint culpa sunt saepe quis fuga dolor nam ut omnis molestiae ut molestiae quos maxime nemo ex ad debitis eos consequatur corrupti quod assumenda nobis eos similique illum est nihil in eos ipsum ad neque eum repudiandae nulla incidunt ut autem sapiente neque est illum eos ut placeat rerum iusto ut suscipit quo ut dolores a enim excepturi voluptas qui sit aut quas aut illum ea optio sit ut enim veniam ut vitae tenetur a voluptas cumque ipsam aspernatur architecto deleniti voluptate quo aspernatur odit quia blanditiis quia officia vitae dolor et facere est porro et delectus voluptatem nihil ut voluptate nisi voluptatibus qui nulla animi voluptatem sit illum omnis velit cum id doloremque alias veritatis quia ut voluptatum magni dolor officia iste aspernatur doloribus natus laborum ad debitis fugit mollitia numquam eaque maxime molestias repellendus dolorem magni.",
+                    "post_id": 47,
+                    "user_id": 4,
+                    "slug": "et-similique-repellat-omnis-perferendis-reprehenderit-officiis-voluptas-vero-34907",
+                    "title": "Et similique repellat omnis perferendis reprehenderit officiis voluptas vero. \/34907",
+                    "body": "Accusantium sed adipisci doloremque natus vel minima qui officiis rerum suscipit suscipit laboriosam nisi ipsum ut voluptas nam odio laudantium autem atque dolorem omnis quia nam quia eum quis qui aliquam incidunt repudiandae libero qui harum non odit delectus eveniet temporibus provident ut nihil ratione consequuntur dolorem inventore voluptas qui necessitatibus minus occaecati consequatur sed nobis accusantium dolorum maiores provident perferendis est placeat quae fugit et libero sed error et esse dolore est rerum consequatur nemo atque asperiores autem in et id expedita aspernatur voluptatem aut blanditiis aperiam et dolor accusantium consequuntur dolorem enim nostrum et accusamus.",
                     "image": "default.png",
-                    "created_at": "2020-07-08T19:13:51.000000Z",
-                    "updated_at": "2020-07-08T19:13:51.000000Z",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
                     "author": {
-                        "user_id": 2,
-                        "name": "Chance Parisian",
-                        "user_name": "boehm.harmon",
-                        "email": "kiara77@example.com",
-                        "email_verified_at": "2020-07-08T19:13:50.000000Z",
+                        "user_id": 4,
+                        "name": "Madyson Schuster",
+                        "user_name": "yundt.shane",
+                        "email": "slangosh@example.net",
+                        "email_verified_at": "2020-07-09T17:38:31.000000Z",
                         "avatar": "default.png",
                         "bio": null,
                         "group_id": 2,
-                        "rank_id": 1,
-                        "created_at": "2020-07-08T19:13:51.000000Z",
-                        "updated_at": "2020-07-08T19:13:51.000000Z"
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
                     }
                 }
             ],
             "first_page_url": "http:\/\/localhost\/api\/v1\/posts?page=1",
             "from": 1,
-            "last_page": 2,
-            "last_page_url": "http:\/\/localhost\/api\/v1\/posts?page=2",
+            "last_page": 11,
+            "last_page_url": "http:\/\/localhost\/api\/v1\/posts?page=11",
             "next_page_url": "http:\/\/localhost\/api\/v1\/posts?page=2",
             "path": "http:\/\/localhost\/api\/v1\/posts",
             "per_page": 5,
             "prev_page_url": null,
             "to": 5,
-            "total": 10
+            "total": 51
         }
     }
 }</code></pre>
 <h3>Request</h3>
 <p><small class="badge badge-green">GET</small>
 <strong><code>api/v1/posts</code></strong></p>
-<h2>Returns post data, plus author, comments and categories</h2>
+<h2>Read</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -633,11 +1174,11 @@ fetch(url, {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "https://localhost/api/v1/search/posts/by-keyword" \
+    -G "https://localhost/api/v1/search/posts/by-keyword/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/search/posts/by-keyword"
+    "https://localhost/api/v1/search/posts/by-keyword/1"
 );
 
 let headers = {
@@ -652,29 +1193,153 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (422):</p>
+<p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">{
     "response": {
-        "success": false,
-        "code": 422,
+        "success": true,
+        "code": 200,
         "message": null,
-        "data": []
+        "data": {
+            "current_page": 1,
+            "data": [
+                {
+                    "post_id": 49,
+                    "user_id": 7,
+                    "slug": "sed-veniam-et-ullam-sed-qui-quas-41015",
+                    "title": "Sed veniam et ullam sed qui quas. \/41015",
+                    "body": "Minus occaecati quibusdam earum incidunt accusamus cupiditate ex est provident id dolore veritatis itaque unde numquam sapiente veritatis sint consequatur rerum sit autem dolor hic optio maiores laboriosam et nemo laboriosam culpa distinctio provident qui perferendis nihil quis et soluta occaecati odit eaque ut fugit incidunt et voluptates animi autem explicabo voluptas consequatur sint dignissimos omnis quia omnis autem culpa iusto suscipit quia blanditiis non eos pariatur esse dolor sit ut quasi totam temporibus ducimus esse temporibus quia illo perspiciatis dignissimos distinctio porro id sapiente culpa ullam quia.",
+                    "image": "default.png",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
+                    "author": {
+                        "user_id": 7,
+                        "name": "Jailyn Herzog",
+                        "user_name": "pink.senger",
+                        "email": "bernhard.rene@example.net",
+                        "email_verified_at": "2020-07-09T17:38:32.000000Z",
+                        "avatar": "default.png",
+                        "bio": null,
+                        "group_id": 2,
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
+                    }
+                },
+                {
+                    "post_id": 48,
+                    "user_id": 9,
+                    "slug": "corporis-nihil-explicabo-earum-corrupti-facere-alias-amet-12990",
+                    "title": "Corporis nihil explicabo earum corrupti facere alias amet. \/12990",
+                    "body": "Ad non est quos beatae qui excepturi tempora culpa qui rem modi animi quia nostrum hic praesentium est voluptates corporis quibusdam culpa id earum assumenda eius quia qui maiores earum eaque placeat iure veniam soluta ea nulla id quo autem perferendis eum sit qui asperiores ut quae sint iste minus in sunt id qui rerum amet architecto quis ut rerum doloremque omnis et sapiente ut laudantium incidunt suscipit quo id ut qui sit ab sapiente deleniti dolores at et aut corrupti facere animi sed consequatur nihil dolorum facilis laboriosam.",
+                    "image": "default.png",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
+                    "author": {
+                        "user_id": 9,
+                        "name": "Antonette Dickens",
+                        "user_name": "alia59",
+                        "email": "wisoky.billy@example.com",
+                        "email_verified_at": "2020-07-09T17:38:32.000000Z",
+                        "avatar": "default.png",
+                        "bio": null,
+                        "group_id": 2,
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
+                    }
+                },
+                {
+                    "post_id": 45,
+                    "user_id": 3,
+                    "slug": "sunt-qui-omnis-tempora-delectus-13598",
+                    "title": "Sunt qui omnis tempora delectus. \/13598",
+                    "body": "Rerum cumque nobis nobis cum voluptatem sit non officiis tempore non sapiente architecto porro illum perspiciatis debitis repellendus perspiciatis eaque vitae voluptatem illo eveniet eius maxime est occaecati in nostrum voluptas ut cupiditate odio optio in dicta qui pariatur tenetur ut quod dolores nulla omnis et id magnam saepe sed libero et excepturi minima a quidem ut magnam quia qui aliquam et modi odio non est repellat ad consectetur qui beatae voluptatem repellat quisquam quo ea autem et molestiae reprehenderit ea eos et voluptatem ut est reiciendis omnis neque autem eligendi voluptas temporibus possimus aut perferendis voluptatem libero non aspernatur voluptatem consectetur debitis corporis distinctio sed mollitia consequuntur dolor nihil est aut ut necessitatibus eos quam amet assumenda porro maiores sunt qui vitae non optio quia earum dolorem dignissimos delectus et perferendis pariatur est.",
+                    "image": "default.png",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
+                    "author": {
+                        "user_id": 3,
+                        "name": "Rae Feil",
+                        "user_name": "etha.lebsack",
+                        "email": "litzy.borer@example.org",
+                        "email_verified_at": "2020-07-09T17:38:31.000000Z",
+                        "avatar": "default.png",
+                        "bio": null,
+                        "group_id": 2,
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
+                    }
+                },
+                {
+                    "post_id": 42,
+                    "user_id": 1,
+                    "slug": "magnam-beatae-veniam-dolorem-et-aut-architecto-labore-70510",
+                    "title": "Magnam beatae veniam dolorem et aut architecto labore. \/70510",
+                    "body": "Omnis harum molestias quas fugit qui explicabo qui fugit fugiat nisi suscipit quasi unde deserunt a vitae et veniam est nobis officiis facere architecto officiis amet quo quis sed illo ipsum unde non veritatis maiores incidunt sapiente exercitationem aut nisi rerum et nulla in reprehenderit alias tenetur atque quam temporibus voluptates voluptate corporis deserunt magnam id deserunt ad et suscipit ut consequuntur saepe fugiat vero quia exercitationem eum doloremque laborum aut nisi aliquid rerum eaque qui rerum repellat aperiam beatae quisquam minus ratione sed assumenda sint reiciendis.",
+                    "image": "default.png",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
+                    "author": {
+                        "user_id": 1,
+                        "name": "Administrator",
+                        "user_name": "admin",
+                        "email": "1233@mail.com",
+                        "email_verified_at": null,
+                        "avatar": "df98b568031a8f164d41b29ca63d73df065f8fda395531f5b1954c1573474452.png",
+                        "bio": null,
+                        "group_id": 1,
+                        "created_at": "2020-07-09T17:38:31.000000Z",
+                        "updated_at": "2020-07-09T21:28:01.000000Z"
+                    }
+                },
+                {
+                    "post_id": 41,
+                    "user_id": 5,
+                    "slug": "repellendus-qui-officiis-optio-rerum-consequuntur-65216",
+                    "title": "Repellendus qui officiis optio rerum consequuntur. \/65216",
+                    "body": "Vel magni cum sapiente impedit earum nihil quia ea qui exercitationem non et dolores eveniet ut sed necessitatibus quo delectus debitis itaque maxime dolore sed voluptatibus vel voluptatem eum eos consequatur sit omnis et nihil totam dignissimos aut quia aut assumenda ullam et ea voluptas saepe omnis est impedit provident sit temporibus error recusandae pariatur dolores suscipit repellendus quia eligendi rem tempora quisquam delectus aut fugiat voluptate voluptas voluptate beatae.",
+                    "image": "default.png",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
+                    "author": {
+                        "user_id": 5,
+                        "name": "Miss Annalise Mosciski",
+                        "user_name": "lmarquardt",
+                        "email": "damion59@example.net",
+                        "email_verified_at": "2020-07-09T17:38:31.000000Z",
+                        "avatar": "default.png",
+                        "bio": null,
+                        "group_id": 2,
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
+                    }
+                }
+            ],
+            "first_page_url": "http:\/\/localhost\/api\/v1\/search\/posts\/by-keyword\/1?page=1",
+            "from": 1,
+            "last_page": 5,
+            "last_page_url": "http:\/\/localhost\/api\/v1\/search\/posts\/by-keyword\/1?page=5",
+            "next_page_url": "http:\/\/localhost\/api\/v1\/search\/posts\/by-keyword\/1?page=2",
+            "path": "http:\/\/localhost\/api\/v1\/search\/posts\/by-keyword\/1",
+            "per_page": 5,
+            "prev_page_url": null,
+            "to": 5,
+            "total": 22
+        }
     }
 }</code></pre>
 <h3>Request</h3>
 <p><small class="badge badge-green">GET</small>
-<strong><code>api/v1/search/posts/by-keyword</code></strong></p>
+<strong><code>api/v1/search/posts/by-keyword/{keyword}</code></strong></p>
 <h2>Search posts by category id</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "https://localhost/api/v1/search/posts/by-category" \
+    -G "https://localhost/api/v1/search/posts/by-category/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/search/posts/by-category"
+    "https://localhost/api/v1/search/posts/by-category/1"
 );
 
 let headers = {
@@ -689,160 +1354,164 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (422):</p>
+<p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">{
     "response": {
-        "success": false,
-        "code": 422,
+        "success": true,
+        "code": 200,
         "message": null,
-        "data": []
+        "data": {
+            "current_page": 1,
+            "data": [
+                {
+                    "post_id": 50,
+                    "user_id": 2,
+                    "slug": "eligendi-voluptas-ut-aut-aut-molestiae-et-pariatur-75654",
+                    "title": "Eligendi voluptas ut aut aut molestiae et pariatur. \/75654",
+                    "body": "Dolorem eos ad amet quo explicabo ea eius consequatur et quia id ullam sunt qui voluptatem dolor et nisi saepe ut vero deserunt neque dolorem soluta cum non praesentium quia iste qui quae ratione natus ut nobis id dolore modi asperiores et placeat fuga impedit qui dolores sed nesciunt omnis cum sapiente blanditiis perferendis sit vel quam possimus omnis quia perferendis magni animi vero et magnam beatae illum veritatis atque necessitatibus sint sequi quo nesciunt provident debitis doloribus hic quas similique error cumque officia doloremque dicta aliquid dolores commodi autem quia voluptas adipisci soluta inventore consequuntur.",
+                    "image": "default.png",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
+                    "author": {
+                        "user_id": 2,
+                        "name": "Ivah Spencer",
+                        "user_name": "candida.rutherford",
+                        "email": "queenie.toy@example.com",
+                        "email_verified_at": "2020-07-09T17:38:31.000000Z",
+                        "avatar": "default.png",
+                        "bio": null,
+                        "group_id": 2,
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
+                    },
+                    "pivot": {
+                        "category_id": 1,
+                        "post_id": 50
+                    }
+                },
+                {
+                    "post_id": 49,
+                    "user_id": 7,
+                    "slug": "sed-veniam-et-ullam-sed-qui-quas-41015",
+                    "title": "Sed veniam et ullam sed qui quas. \/41015",
+                    "body": "Minus occaecati quibusdam earum incidunt accusamus cupiditate ex est provident id dolore veritatis itaque unde numquam sapiente veritatis sint consequatur rerum sit autem dolor hic optio maiores laboriosam et nemo laboriosam culpa distinctio provident qui perferendis nihil quis et soluta occaecati odit eaque ut fugit incidunt et voluptates animi autem explicabo voluptas consequatur sint dignissimos omnis quia omnis autem culpa iusto suscipit quia blanditiis non eos pariatur esse dolor sit ut quasi totam temporibus ducimus esse temporibus quia illo perspiciatis dignissimos distinctio porro id sapiente culpa ullam quia.",
+                    "image": "default.png",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
+                    "author": {
+                        "user_id": 7,
+                        "name": "Jailyn Herzog",
+                        "user_name": "pink.senger",
+                        "email": "bernhard.rene@example.net",
+                        "email_verified_at": "2020-07-09T17:38:32.000000Z",
+                        "avatar": "default.png",
+                        "bio": null,
+                        "group_id": 2,
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
+                    },
+                    "pivot": {
+                        "category_id": 1,
+                        "post_id": 49
+                    }
+                },
+                {
+                    "post_id": 47,
+                    "user_id": 4,
+                    "slug": "et-similique-repellat-omnis-perferendis-reprehenderit-officiis-voluptas-vero-34907",
+                    "title": "Et similique repellat omnis perferendis reprehenderit officiis voluptas vero. \/34907",
+                    "body": "Accusantium sed adipisci doloremque natus vel minima qui officiis rerum suscipit suscipit laboriosam nisi ipsum ut voluptas nam odio laudantium autem atque dolorem omnis quia nam quia eum quis qui aliquam incidunt repudiandae libero qui harum non odit delectus eveniet temporibus provident ut nihil ratione consequuntur dolorem inventore voluptas qui necessitatibus minus occaecati consequatur sed nobis accusantium dolorum maiores provident perferendis est placeat quae fugit et libero sed error et esse dolore est rerum consequatur nemo atque asperiores autem in et id expedita aspernatur voluptatem aut blanditiis aperiam et dolor accusantium consequuntur dolorem enim nostrum et accusamus.",
+                    "image": "default.png",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
+                    "author": {
+                        "user_id": 4,
+                        "name": "Madyson Schuster",
+                        "user_name": "yundt.shane",
+                        "email": "slangosh@example.net",
+                        "email_verified_at": "2020-07-09T17:38:31.000000Z",
+                        "avatar": "default.png",
+                        "bio": null,
+                        "group_id": 2,
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
+                    },
+                    "pivot": {
+                        "category_id": 1,
+                        "post_id": 47
+                    }
+                },
+                {
+                    "post_id": 46,
+                    "user_id": 4,
+                    "slug": "saepe-doloribus-et-deserunt-aut-velit-74457",
+                    "title": "Saepe doloribus et deserunt aut velit. \/74457",
+                    "body": "Laboriosam est officia eum molestiae atque veritatis possimus voluptas non tenetur impedit perferendis quibusdam qui velit ullam officia sunt nihil reprehenderit repellat doloremque et earum sunt et eum ipsum id animi voluptates qui voluptate similique sit facilis recusandae sit ab non sint atque qui aut voluptatem id molestiae nostrum ea asperiores omnis sapiente minus molestias qui beatae consectetur adipisci rerum sed.",
+                    "image": "default.png",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
+                    "author": {
+                        "user_id": 4,
+                        "name": "Madyson Schuster",
+                        "user_name": "yundt.shane",
+                        "email": "slangosh@example.net",
+                        "email_verified_at": "2020-07-09T17:38:31.000000Z",
+                        "avatar": "default.png",
+                        "bio": null,
+                        "group_id": 2,
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
+                    },
+                    "pivot": {
+                        "category_id": 1,
+                        "post_id": 46
+                    }
+                },
+                {
+                    "post_id": 43,
+                    "user_id": 5,
+                    "slug": "sunt-eum-enim-delectus-quisquam-pariatur-labore-magni-7882",
+                    "title": "Sunt eum enim delectus quisquam pariatur labore magni. \/7882",
+                    "body": "Ut molestiae similique impedit laboriosam laudantium impedit qui perferendis dolores dolor libero illum non est autem quam velit sunt voluptatem est illo dolorem voluptatem ut veniam et est facere consectetur illum repellendus sed sint enim quo at qui sapiente vel necessitatibus maiores magnam est ea commodi nostrum ut officiis qui et quisquam ab necessitatibus accusantium enim quis quia et in pariatur consequatur molestiae tempora.",
+                    "image": "default.png",
+                    "created_at": "2020-07-09T17:38:32.000000Z",
+                    "updated_at": "2020-07-09T17:38:32.000000Z",
+                    "author": {
+                        "user_id": 5,
+                        "name": "Miss Annalise Mosciski",
+                        "user_name": "lmarquardt",
+                        "email": "damion59@example.net",
+                        "email_verified_at": "2020-07-09T17:38:31.000000Z",
+                        "avatar": "default.png",
+                        "bio": null,
+                        "group_id": 2,
+                        "created_at": "2020-07-09T17:38:32.000000Z",
+                        "updated_at": "2020-07-09T17:38:32.000000Z"
+                    },
+                    "pivot": {
+                        "category_id": 1,
+                        "post_id": 43
+                    }
+                }
+            ],
+            "first_page_url": "http:\/\/localhost\/api\/v1\/search\/posts\/by-category\/1?page=1",
+            "from": 1,
+            "last_page": 5,
+            "last_page_url": "http:\/\/localhost\/api\/v1\/search\/posts\/by-category\/1?page=5",
+            "next_page_url": "http:\/\/localhost\/api\/v1\/search\/posts\/by-category\/1?page=2",
+            "path": "http:\/\/localhost\/api\/v1\/search\/posts\/by-category\/1",
+            "per_page": 5,
+            "prev_page_url": null,
+            "to": 5,
+            "total": 25
+        }
     }
 }</code></pre>
 <h3>Request</h3>
 <p><small class="badge badge-green">GET</small>
-<strong><code>api/v1/search/posts/by-category</code></strong></p>
-<h2>Store a newly created resource in storage.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "https://localhost/api/v1/subscribers" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -d '{"user_id":439473.5204,"name":"nemo","email":"novella53@example.org"}'
-</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/subscribers"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "user_id": 439473.5204,
-    "name": "nemo",
-    "email": "novella53@example.org"
-}
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-    body: body
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>Request</h3>
-<p><small class="badge badge-black">POST</small>
-<strong><code>api/v1/subscribers</code></strong></p>
-<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-<p><code><b>user_id</b></code>&nbsp; <small>number</small>         <i>optional</i>    <br></p>
-<p><code><b>name</b></code>&nbsp; <small>string</small>     <br></p>
-<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
-The value must be a valid email address.</p>
-<h2>Generate a new token to be used to unsubscribe</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "https://localhost/api/v1/subscribers/request-unsubscribe-token" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -d '{"email":"angel48@example.com"}'
-</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/subscribers/request-unsubscribe-token"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "email": "angel48@example.com"
-}
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-    body: body
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>Request</h3>
-<p><small class="badge badge-black">POST</small>
-<strong><code>api/v1/subscribers/request-unsubscribe-token</code></strong></p>
-<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
-The value must be a valid email address.</p>
-<h2>Unsubscribe an user by Email and Token provided in the email</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "https://localhost/api/v1/subscribers/unsubscribe-by-token" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -d '{"token":"temporibus","email":"connor30@example.com"}'
-</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/subscribers/unsubscribe-by-token"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "token": "temporibus",
-    "email": "connor30@example.com"
-}
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-    body: body
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>Request</h3>
-<p><small class="badge badge-black">POST</small>
-<strong><code>api/v1/subscribers/unsubscribe-by-token</code></strong></p>
-<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-<p><code><b>token</b></code>&nbsp; <small>string</small>     <br></p>
-<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
-The value must be a valid email address.</p>
-<h2>Logout method</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "https://localhost/api/v1/auth/logout" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/auth/logout"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>Request</h3>
-<p><small class="badge badge-black">POST</small>
-<strong><code>api/v1/auth/logout</code></strong></p>
-<h2>Stores a new post into the database</h2>
+<strong><code>api/v1/search/posts/by-category/{category_id}</code></strong></p>
+<h2>Create</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -850,7 +1519,7 @@ fetch(url, {
     "https://localhost/api/v1/posts" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_id":195342.755,"title":"atque","body":"sint","image":{}}'
+    -d '{"user_id":4542510.6,"title":"velit","body":"possimus","image":{}}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "https://localhost/api/v1/posts"
@@ -862,9 +1531,9 @@ let headers = {
 };
 
 let body = {
-    "user_id": 195342.755,
-    "title": "atque",
-    "body": "sint",
+    "user_id": 4542510.6,
+    "title": "velit",
+    "body": "possimus",
     "image": {}
 }
 
@@ -883,7 +1552,7 @@ fetch(url, {
 <p><code><b>title</b></code>&nbsp; <small>string</small>     <br></p>
 <p><code><b>body</b></code>&nbsp; <small>string</small>     <br></p>
 <p><code><b>image</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br></p>
-<h2>Updates data from a specific post</h2>
+<h2>Update</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -891,7 +1560,7 @@ fetch(url, {
     "https://localhost/api/v1/posts/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"corporis","body":"est","image":{}}'
+    -d '{"title":"suscipit","body":"modi","image":{}}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "https://localhost/api/v1/posts/1"
@@ -903,8 +1572,8 @@ let headers = {
 };
 
 let body = {
-    "title": "corporis",
-    "body": "est",
+    "title": "suscipit",
+    "body": "modi",
     "image": {}
 }
 
@@ -922,7 +1591,7 @@ fetch(url, {
 <p><code><b>title</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br></p>
 <p><code><b>body</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br></p>
 <p><code><b>image</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br></p>
-<h2>Removes a specific post from the database</h2>
+<h2>Delete</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -948,7 +1617,153 @@ fetch(url, {
 <h3>Request</h3>
 <p><small class="badge badge-red">DELETE</small>
 <strong><code>api/v1/posts/{post_id}</code></strong></p>
-<h2>Display a listing of the resource.</h2>
+<h2>Get All Posts</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "https://localhost/api/v1/administration/manage-posts/posts" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/administration/manage-posts/posts"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-green">GET</small>
+<strong><code>api/v1/administration/manage-posts/posts</code></strong></p><h1>Subscribers</h1>
+<h2>Store</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/subscribers" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_id":1764.906616,"name":"quaerat","email":"albertha.west@example.net"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/subscribers"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": 1764.906616,
+    "name": "quaerat",
+    "email": "albertha.west@example.net"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/subscribers</code></strong></p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p><code><b>user_id</b></code>&nbsp; <small>number</small>         <i>optional</i>    <br></p>
+<p><code><b>name</b></code>&nbsp; <small>string</small>     <br></p>
+<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
+The value must be a valid email address.</p>
+<h2>GET Unsubscribe Token</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/subscribers/request-unsubscribe-token" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"stan60@example.org"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/subscribers/request-unsubscribe-token"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "stan60@example.org"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/subscribers/request-unsubscribe-token</code></strong></p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
+The value must be a valid email address.</p>
+<h2>Unsubscribe With Token</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/subscribers/unsubscribe-by-token" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"token":"aut","email":"hturner@example.org"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://localhost/api/v1/subscribers/unsubscribe-by-token"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "token": "aut",
+    "email": "hturner@example.org"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/subscribers/unsubscribe-by-token</code></strong></p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p><code><b>token</b></code>&nbsp; <small>string</small>     <br></p>
+<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
+The value must be a valid email address.</p>
+<h2>Get All Subscribers</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -979,17 +1794,17 @@ fetch(url, {
 }</code></pre>
 <h3>Request</h3>
 <p><small class="badge badge-green">GET</small>
-<strong><code>api/v1/subscribers</code></strong></p>
-<h2>Returns all logs from a specific user</h2>
+<strong><code>api/v1/subscribers</code></strong></p><h1>Users</h1>
+<h2>Read</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "https://localhost/api/v1/logs/search" \
+    -G "https://localhost/api/v1/users/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/logs/search"
+    "https://localhost/api/v1/users/1"
 );
 
 let headers = {
@@ -1011,19 +1826,19 @@ fetch(url, {
 }</code></pre>
 <h3>Request</h3>
 <p><small class="badge badge-green">GET</small>
-<strong><code>api/v1/logs/search</code></strong></p>
-<h2>Stores a new comment</h2>
+<strong><code>api/v1/users/{user_id}</code></strong></p>
+<h2>Update user email</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "https://localhost/api/v1/comments/store" \
+    "https://localhost/api/v1/users/update-email" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":3539646.3580202,"comment":"consectetur","parent_id":3628679.8899369}'
+    -d '{"user_id":40087.9,"email":"rhartmann@example.org"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/comments/store"
+    "https://localhost/api/v1/users/update-email"
 );
 
 let headers = {
@@ -1032,9 +1847,8 @@ let headers = {
 };
 
 let body = {
-    "post_id": 3539646.3580202,
-    "comment": "consectetur",
-    "parent_id": 3628679.8899369
+    "user_id": 40087.9,
+    "email": "rhartmann@example.org"
 }
 
 fetch(url, {
@@ -1046,23 +1860,23 @@ fetch(url, {
     .then(json =&gt; console.log(json));</code></pre>
 <h3>Request</h3>
 <p><small class="badge badge-black">POST</small>
-<strong><code>api/v1/comments/store</code></strong></p>
+<strong><code>api/v1/users/update-email</code></strong></p>
 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-<p><code><b>post_id</b></code>&nbsp; <small>number</small>     <br></p>
-<p><code><b>comment</b></code>&nbsp; <small>string</small>     <br></p>
-<p><code><b>parent_id</b></code>&nbsp; <small>number</small>         <i>optional</i>    <br></p>
-<h2>Updates data from a specific comment</h2>
+<p><code><b>user_id</b></code>&nbsp; <small>number</small>     <br></p>
+<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
+The value must be a valid email address.</p>
+<h2>Update user password</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X PUT \
-    "https://localhost/api/v1/comments/1" \
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/users/update-password" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"comment":"aliquid"}'
+    -d '{"user_id":498.2,"password":"sit","password_confirmation":"earum"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/comments/1"
+    "https://localhost/api/v1/users/update-password"
 );
 
 let headers = {
@@ -1071,31 +1885,37 @@ let headers = {
 };
 
 let body = {
-    "comment": "aliquid"
+    "user_id": 498.2,
+    "password": "sit",
+    "password_confirmation": "earum"
 }
 
 fetch(url, {
-    method: "PUT",
+    method: "POST",
     headers: headers,
     body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <h3>Request</h3>
-<p><small class="badge badge-darkblue">PUT</small>
-<strong><code>api/v1/comments/{comment_id}</code></strong></p>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/users/update-password</code></strong></p>
 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-<p><code><b>comment</b></code>&nbsp; <small>string</small>     <br></p>
-<h2>Removes a specific comment from the database</h2>
+<p><code><b>user_id</b></code>&nbsp; <small>number</small>     <br></p>
+<p><code><b>password</b></code>&nbsp; <small>string</small>     <br></p>
+<p><code><b>password_confirmation</b></code>&nbsp; <small>string</small>     <br></p>
+<h2>Update user avatar</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X DELETE \
-    "https://localhost/api/v1/comments/1" \
+<pre><code class="language-bash">curl -X POST \
+    "https://localhost/api/v1/users/update-avatar" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"</code></pre>
+    -H "Accept: application/json" \
+    -d '{"user_id":10578.28699819,"avatar":"distinctio"}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "https://localhost/api/v1/comments/1"
+    "https://localhost/api/v1/users/update-avatar"
 );
 
 let headers = {
@@ -1103,15 +1923,24 @@ let headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "user_id": 10578.28699819,
+    "avatar": "distinctio"
+}
+
 fetch(url, {
-    method: "DELETE",
+    method: "POST",
     headers: headers,
+    body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <h3>Request</h3>
-<p><small class="badge badge-red">DELETE</small>
-<strong><code>api/v1/comments/{comment_id}</code></strong></p>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/v1/users/update-avatar</code></strong></p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p><code><b>user_id</b></code>&nbsp; <small>number</small>     <br></p>
+<p><code><b>avatar</b></code>&nbsp; <small>string</small>     <br></p>
     </div>
     <div class="dark-box">
                     <div class="lang-selector">

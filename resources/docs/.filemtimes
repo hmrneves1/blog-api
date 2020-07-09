@@ -1,6 +1,16 @@
 # GENERATED. YOU SHOULDN'T MODIFY OR DELETE THIS FILE.
 # Scribe uses this file to know when you change something manually in your docs.
-resources/docs/groups/categories.md=1594235690
-resources/docs/groups/endpoints.md=1594235690
-resources/docs/index.md=1594235690
-resources/docs/authentication.md=1594235690
+resources/docs/groups/categories.md=1594333256
+resources/docs/groups/endpoints.md=1594333155
+resources/docs/index.md=1594333256
+resources/docs/authentication.md=1594333257
+resources/docs/groups/authentication.md=1594333256
+resources/docs/groups/post-comments.md=1594333256
+resources/docs/groups/logs.md=1594333256
+resources/docs/groups/posts.md=1594333256
+resources/docs/groups/subscribers.md=1594333256
+resources/docs/groups/users.md=1594333256
+resources/docs/groups/administration-pending-comments.md=1594333256
+resources/docs/groups/administration-pending-posts.md=1594333256
+resources/docs/groups/administration-user-groups.md=1594333256
+resources/docs/groups/administration-users.md=1594333256

@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Traits\Api\v1\ApiResponse;
 
+/**
+ * @group Authentication
+ *
+ * Authentication methods.
+ */
 class LoginController extends Controller
 {
     /**
@@ -18,7 +23,7 @@ class LoginController extends Controller
     use ApiResponse;
 
     /**
-     * Login method
+     * Login
      *
      * @param Login $request
      * @return \Illuminate\Http\JsonResponse

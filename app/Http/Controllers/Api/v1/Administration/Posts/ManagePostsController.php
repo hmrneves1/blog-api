@@ -9,6 +9,9 @@ use App\Traits\Api\v1\ApiResponse;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
+/**
+ * @group Administration - Pending Posts
+ */
 class ManagePostsController extends Controller
 {
     /**
@@ -18,8 +21,6 @@ class ManagePostsController extends Controller
 
     /**
      * List all pending posts
-     *
-     * List all posts pending to approval
      *
      * @return mixed
      */
@@ -34,11 +35,6 @@ class ManagePostsController extends Controller
 
     /**
      * Approve a pending post
-     *
-     * Moves a post from the pending posts table to the main posts table
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
      */
     public function approve_post(Request $request)
     {
@@ -73,11 +69,6 @@ class ManagePostsController extends Controller
 
     /**
      * Delete a pending posts
-     *
-     * To use when the post wasn't approved
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
      */
     public function delete_pending_post(Request $request)
     {

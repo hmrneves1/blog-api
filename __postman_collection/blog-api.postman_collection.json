@@ -9,14 +9,14 @@
 			"name": "1. Authentication",
 			"item": [
 				{
-					"name": "register() Register new user",
+					"name": "register() | Register new user",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -108,16 +108,6 @@
 				{
 					"name": "logout() | User logout",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2EwODBiNGNiZDc3MWRlNDNiN2NmOWNhZDBjNWNkNzI3OTg4MzQyMTVlMDg2ZDdiNTYzYmJhNGU1MDg5NWNkZGUyMGVlNDU5NDliNmRhNjYiLCJpYXQiOjE1OTQyMzEzODgsIm5iZiI6MTU5NDIzMTM4OCwiZXhwIjoxNTk2OTA5Nzg4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Hdv_3p5i7-luNAaa3JplumtXDy_0O_kwCIfNS9D4hsDN_DNn0WfTpIBOchu-7nuB44tNmoM2LotANBHGYWh4EtSjzhAFMD2VfZTF9eJYC4i7jZvkpSBVmDKnGSQz-lBycmoKbdptKAtHFIJub_Vlv81sJPgEmXSuMivR800RcKWgPCEkMnoKtkG2qcqKmCQZ1Xf6QE0071KBy35BegaRypma-SzqQ0W_yLadpdZ2fTAld18dmJQPoh08TQGB8GDgkz3IkS_lmkkMpCdzAM6JTApWShKix3xYsLfSgYdUPC6Q2CKzIOe0soSf_8DgSCkvFjzfQe6scF5FkQKab5GwGkEF4uXut5FIa_Kfa2Cx6Zf-VFu11D4KgtsMCFkyT7xcwqlpRZR067WB-SCubMIfFm9Zx4Za8oXBGztiOfApQYwBbzdUidNhG5-eweCtJO7xnqdZfP7Bkk10TY03wz57SgG4ZUa5GutkKt16cSyt4fwZ_FqJYDc91stibXZmWLVTO6aB3m7RP11Z0jTg04B-chHghUU-joQjVJ2M2mG0qaYW_PbUOHMPy8wL2GoeLR68eJRg22DMDNzoCGeBYdhNXw-JRTOHBQ3Ga8lxa34E2jszinxPntuute-bojGPIb0ZA6WKXFXTGyiGjWwqp30Qm7rUXaM-B_Rl5q8wtt76xcY",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -136,6 +126,32 @@
 								"v1",
 								"auth",
 								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout_all_devices() | Deletes all user tokens",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/auth/logout-all-devices",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout-all-devices"
 							]
 						}
 					},
@@ -832,11 +848,6 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "user_id",
-									"value": "",
-									"type": "text"
-								},
-								{
 									"key": "name",
 									"value": "hmrneves1/blog-api@github",
 									"type": "text"
@@ -941,6 +952,253 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "8. Administration",
+			"item": [
+				{
+					"name": "Manage Posts",
+					"item": [
+						{
+							"name": "posts() | List all posts",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost/api/v1/administration/manage-posts/posts",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"administration",
+										"manage-posts",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pending_posts() | List all pending posts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost/api/v1/administration/manage-posts/pending-posts",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"administration",
+										"manage-posts",
+										"pending-posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "approve_posts() | Approve pending post",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "post_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost/api/v1/administration/manage-posts/pending-posts/approve",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"administration",
+										"manage-posts",
+										"pending-posts",
+										"approve"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_pending_post() | When the post is not approved",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "post_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost/api/v1/administration/manage-posts/pending-posts/delete",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"administration",
+										"manage-posts",
+										"pending-posts",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Manage Comments",
+					"item": [
+						{
+							"name": "comments() | List all pending comments",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost/api/v1/administration/manage-comments/pending-comments",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"administration",
+										"manage-comments",
+										"pending-comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "approve() | Approve a comment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "comment_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost/api/v1/administration/manage-comments/pending-comments/approve",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"administration",
+										"manage-comments",
+										"pending-comments",
+										"approve"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete() | When a comment is not approved",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "comment_id",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost/api/v1/administration/manage-comments/pending-comments/delete",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"administration",
+										"manage-comments",
+										"pending-comments",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -948,7 +1206,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTI1ZmQ4MmMyYmNhNDg1YzQ4YWJlMTQyNTE4MmYwOWRiNTk3YzE3ZjE0ZWIwNjU1ZDM5NDYwZThkNTljYWVhMmRjNDEzYjNkNTZiOWJmYjYiLCJpYXQiOjE1OTQyMzQ0MzUsIm5iZiI6MTU5NDIzNDQzNSwiZXhwIjoxNTk2OTEyODM1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KbTInnvpCwm_9_qgduK0gVbwA33Rz5Mf5EXNjcRgHHC5KtSyP3swW5ZA7_YmNuCybV7Zha33aiu9tK19X8qgLWHHjdV4JWJek6nHvR_aRGzVpcScnjP0h0JWBt--T6eRu11vOZh4BXwy-kTOepGTorsK5qmtQvdfGY0tMcRBAQ0JhcaMGA6Ro3wiiP7MR7sr6vXFXKaAGopZb-6cwg82HWzIImS623K2f1hfWPwcWi6-KGDU0XYklys90kn6UUCthVG5o1-_C0r0UVZIFc34jz2G8yWtChoDXt-g8K85Efjn1aCEwkWHP7To1al6AD5f0M5a1VRCUbXxseXAA8cSG14suMqB_toAI_O240EgOKbXmaVZWO0oRYxgQoq7qnETIx-2OfyXtyTxoUM5MdN-OO-SJWCYDKnhxHbfhyVchLI-KSrFV_YhZ6w9LWKuzYFxCAHyaiDZA62AMWf6W0NysasoTfrN9H1-YM52D8TRhtqjpfxxWw8hP2wusYy8eVgd0XCWyPqKaGjydbq7gmACNNMXx_qO48ovL8cTEo_EbXzg2xpTv7VnRz-tkL0wYEghdF3gbhXUB1HWuQrCh2XIgm5tv3Cx7fnY_BA5VISKeG8x5J3-peL9Y3yZUicMnr5sCW-d3xjq4wnGEEZRS1JMA0AiJNl_22JkgChYIt_g10w",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2I2NDhkNDcxNDBiZmI0N2M2NTQ4ZjczYjU0YTE5Y2RlOThjYzRhZGU0Njg4MmRlMDIzMDkwNmQ1YTcyZDE1NzBkZmM3NjhjMzA2NWY4NzgiLCJpYXQiOjE1OTQyNDYzMTgsIm5iZiI6MTU5NDI0NjMxOCwiZXhwIjoxNjI1NzgyMzE4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.CpplNYHuu3MNXG3El3w8s8SN0nA6XvQ79l-7HrJXo0NslFda7YLMShiKZJFkh_jsYjgvEHBqOMsx8hAjoixkN4QCQWn_WCYoBfuzm2ZoBg10CgWq1j4vd2cRiJ5-GXmzCuRlm-eIxqGuKIxAYrjtRShcFwIAWiP1T45sh4f7zRvSaT3ROczZqumhPaivopO5EbkabCIeTQt-BoCmDKWTDuel5YTBTJtdGqtrzV_Z1OrW3JcbZW6ul1mMzidp81DQ-AYs_Hww1gff4QvlB7-XXoCcma70sQ4J249kiAh9a71iSBnPsZ4F6RWoeWtrRcYDsWdC19jLSiAmyRZ75tfud9uM0Pb_-4STTpYXKP5XE6cTpuXAud8Qq0b3D_N9pSPjrouQfexPvrH7w9DSy7SjAuJF6m8TiZg3O88pOVxamMHDbyrsmr7ly2qtAx5u9HebmHosjun0EneEz8jwL40pl5bqHVWTPWklLwOi9KA10c3cKTv9GjdjYZKiaJoE3x4zJR-RvZdoCLSAnIVr0KRK-cxDsHeqj-t1qL7iQQKGna9uAmJwnpmiHxHI5colq6m3Bz6f9REYF0BLJcFHwt8y0VlyCyRSon2Wx5kLq6gb3ScDC_VV0-FeurSDNlaeMZxVAVnljMFd8YoNs5zq2UMRZHYpAQ_TVNeTt02bVSQSBiU",
 				"type": "string"
 			}
 		]

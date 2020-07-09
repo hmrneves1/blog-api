@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @group Categories
  *
- * Basic CRUD for posts categories
+ * Managing categories.
  */
 class CategoriesController extends Controller
 {
@@ -24,7 +24,7 @@ class CategoriesController extends Controller
     use ApiResponse;
 
     /**
-     * All Categories
+     * Get All Categories
      *
      * Returns all available categories
      *
@@ -37,7 +37,7 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Stores a New Category
+     * Create
      *
      * Store a new category into the database
      *
@@ -64,7 +64,7 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Show one Category
+     * Read
      *
      * Show data from a specific category
      *
@@ -81,7 +81,7 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Update Category
+     * Update
      *
      * Updates data from a specific category
      *
@@ -112,7 +112,7 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Delete Category
+     * Delete
      *
      * Removes a specific category from the database
      *

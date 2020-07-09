@@ -12,6 +12,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
+/**
+ * @group Subscribers
+ */
 class SubscribersController extends Controller
 {
     /**
@@ -20,7 +23,7 @@ class SubscribersController extends Controller
     use ApiResponse;
 
     /**
-     * Display a listing of the resource.
+     * Get All Subscribers
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -34,7 +37,7 @@ class SubscribersController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
@@ -59,7 +62,7 @@ class SubscribersController extends Controller
     }
 
     /**
-     * Generate a new token to be used to unsubscribe
+     * GET Unsubscribe Token
      *
      * @param RequestUnsubscribeToken $request
      * @return \Illuminate\Http\JsonResponse
@@ -104,7 +107,7 @@ class SubscribersController extends Controller
     }
 
     /**
-     * Unsubscribe an user by Email and Token provided in the email
+     * Unsubscribe With Token
      *
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
@@ -146,16 +149,4 @@ class SubscribersController extends Controller
         return $this->response(false, 500, config('http_responses.500'), []);
     }
 
-
-
-    public function unsubscribe_registered_user(Request $request)
-    {
-
-    }
-
-
-    public function manage_subscriptions(Request $request)
-    {
-
-    }
 }

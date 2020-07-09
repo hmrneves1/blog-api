@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+/**
+ * @group Posts
+ */
 class PostsController extends Controller
 {
     /**
@@ -45,20 +48,19 @@ class PostsController extends Controller
     }
 
     /**
-     * Returns all posts with author data
-     * @return \Illuminate\Http\JsonResponse
+     * Get All Posts
      */
     public function index(Request $request)
     {
         // Get all posts
-        $posts = Posts::with('author')->paginate(5);
+        $posts = Posts::with('author')->orderBy('post_id', 'desc')->paginate(5);
 
         //Return posts
         return $this->response(true, 200, config('http_responses.200'), $posts);
     }
 
     /**
-     * Stores a new post into the database
+     * Create
      *
      * @param StoreNewPost $request
      * @return \Illuminate\Http\JsonResponse
@@ -109,10 +111,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Returns post data, plus author, comments and categories
-     *
-     * @param $slug
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * Read
      */
     public function show($slug)
     {
@@ -131,11 +130,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Updates data from a specific post
-     *
-     * @param UpdatePost $request
-     * @param $post_id
-     * @return PostsResource|\Illuminate\Http\JsonResponse
+     * Update
      */
     public function update(UpdatePost $request, $post_id)
     {
@@ -192,10 +187,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Removes a specific post from the database
-     *
-     * @param $post_id
-     * @return \Illuminate\Http\JsonResponse
+     * Delete
      */
     public function destroy($post_id)
     {
@@ -218,20 +210,17 @@ class PostsController extends Controller
 
     /**
      * Search posts by keyword
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function search_posts_by_keyword(Request $request)
+    public function search_posts_by_keyword($keyword)
     {
-        // If the $request->keyword is empty, return error
-        if ($request->keyword === null)
+        // If the $keyword is empty, return error
+        if ($keyword === null)
         {
             return $this->response(false, 422, config('http_responses.422'), []);
         }
 
         // Get posts by title keyword
-        $posts = Posts::with('author')->where('title', 'LIKE', '%'.$request->keyword.'%')->paginate(5);
+        $posts = Posts::with('author')->where('title', 'LIKE', '%'.$keyword.'%')->orderBy('post_id', 'desc')->paginate(5);
 
         // If no posts found, return 404
         if ($posts->isEmpty())
@@ -246,20 +235,17 @@ class PostsController extends Controller
 
     /**
      * Search posts by category id
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function search_posts_by_category(Request $request)
+    public function search_posts_by_category($category_id)
     {
-        // If $request->category_id is empty or not numeric, return error
-        if ($request->category_id === null || !is_numeric($request->category_id))
+        // If $category_id is empty or not numeric, return error
+        if ($category_id === null || !is_numeric($category_id))
         {
             return $this->response(false, 422, config('http_responses.422'), []);
         }
 
         // Get the posts
-        $posts = Categories::findOrFail($request->category_id)->posts()->with('author')->paginate(5);
+        $posts = Categories::findOrFail($category_id)->posts()->with('author')->orderBy('post_id', 'desc')->paginate(5);
 
         // If no posts found, return 404
         if ($posts->isEmpty())

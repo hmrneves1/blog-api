@@ -8,6 +8,9 @@ use App\Models\Api\v1\Comments\PostsComments;
 use App\Traits\Api\v1\ApiResponse;
 use Illuminate\Http\Request;
 
+/**
+ * @group Administration - Pending Comments
+ */
 class ManageCommentsController extends Controller
 {
     /**
@@ -17,10 +20,6 @@ class ManageCommentsController extends Controller
 
     /**
      * List all pending comments
-     *
-     * List all comments pending to approval
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function comments()
     {
@@ -31,6 +30,9 @@ class ManageCommentsController extends Controller
         return $this->response(true, 200, config('http_response.200'), $comments);
     }
 
+    /**
+     * Approve pending comment
+     */
     public function approve(Request $request)
     {
         // Find pending comment
@@ -63,11 +65,6 @@ class ManageCommentsController extends Controller
 
     /**
      * Delete a pending comment
-     *
-     * To use when the comment wasn't approved
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
      */
     public function delete(Request $request)
     {

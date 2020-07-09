@@ -10,6 +10,9 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * @group Authentication
+ */
 class RegisterController extends Controller
 {
     /**
@@ -18,7 +21,7 @@ class RegisterController extends Controller
     use ApiResponse;
 
     /**
-     * Register method
+     * Register
      *
      * @param Register $request
      * @return \Illuminate\Http\JsonResponse
