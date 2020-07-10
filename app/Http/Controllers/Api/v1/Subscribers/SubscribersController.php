@@ -127,9 +127,8 @@ class SubscribersController extends Controller
             return $this->response(false, 404, config('http_responses.404'), []);
         }
 
-        // Validate token age
-        // if the token_expire_date is greater than now()
-        if (date(now()) > $subscriber->token_expire_date)
+        // Validate if the token is valid
+        if (strtotime($subscriber->token_expire_date) < time())
         {
             // return not found response
             return $this->response(false, 410, 'The token has expired.', []);

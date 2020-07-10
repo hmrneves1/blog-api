@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
  */
 Route::post('/auth/register', 'Auth\RegisterController@register');
 Route::post('/auth/login', 'Auth\LoginController@login');
+Route::post('/auth/request-reset-password-token', 'Auth\ResetPasswordController@request_token');
+Route::post('/auth/set-new-password', 'Auth\ResetPasswordController@set_new_password')->name('auth.set_new_password');
 
 
 /**

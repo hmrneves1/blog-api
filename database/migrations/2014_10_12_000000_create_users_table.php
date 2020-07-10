@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->comment('User email address.');
             $table->timestamp('email_verified_at')->nullable()->comment('When the user verified the email.');
             $table->string('password')->comment('User password.');
+            $table->string('pw_reset_token')->nullable()->comment('User reset password token.');
+            $table->string('pw_reset_token_expiration')->nullable()->comment('When token expires.');
             $table->string('avatar')->default('default.png')->nullable()->comment('Avatar file name.');
             $table->string('bio', 512)->nullable()->comment('User biography.');
             $table->unsignedBigInteger('group_id')->default(2)->comment('Foreign key related to tbl_users_groups.group_id.');

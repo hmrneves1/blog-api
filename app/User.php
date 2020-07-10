@@ -75,7 +75,7 @@ class User extends Authenticatable implements MustVerifyEmailAlias
      * @var array
      */
     protected $fillable = [
-        'name', 'user_name', 'email', 'password', 'avatar', 'bio', 'group_id'
+        'name', 'user_name', 'email', 'password', 'avatar', 'bio', 'group_id', 'pw_reset_token', 'pw_reset_token_expiration'
     ];
 
     /**
@@ -84,7 +84,7 @@ class User extends Authenticatable implements MustVerifyEmailAlias
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'pw_reset_token', 'pw_reset_token_expiration'
     ];
 
     /**
