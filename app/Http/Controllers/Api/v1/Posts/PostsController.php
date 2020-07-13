@@ -53,7 +53,7 @@ class PostsController extends Controller
     public function index(Request $request)
     {
         // Get all posts
-        $posts = Posts::with('author')->orderBy('post_id', 'desc')->paginate(5);
+        $posts = Posts::with('author')->where('approved' , 1)->orderBy('post_id', 'desc')->paginate(5);
 
         //Return posts
         return $this->response(true, 200, config('http_responses.200'), $posts);
@@ -70,6 +70,7 @@ class PostsController extends Controller
         //Get the validated data from the request.
         $validated_data = $request->validated();
 
+
         // Check if we processed an image
         if ($request->has('image'))
         {
@@ -82,6 +83,9 @@ class PostsController extends Controller
             // Assign the name to the $validated_data array
             $validated_data['image'] = $file_name;
         }
+
+        // Set user_id
+        $validated_data['user_id'] = auth()->user()->user_id;
 
         // Store the post
         // The function sluggable() with handle the slug for this post
@@ -102,6 +106,9 @@ class PostsController extends Controller
         // Check if the post was stored successfully
         if ($post)
         {
+            // Sync Categories to the Post
+            $post->categories()->attach($validated_data['categories']);
+
             //return response
             return $this->response(true, 200, config('http_responses.200'), $post);
         }
@@ -178,6 +185,9 @@ class PostsController extends Controller
         // Check if the post was updated
         if ($post_updated)
         {
+            // Sync Categories to the Post
+            $post->categories()->sync($validated_data['categories']);
+
             // Return updated post
             return $this->response(true, 200, config('http_responses.200'), $post);
         }

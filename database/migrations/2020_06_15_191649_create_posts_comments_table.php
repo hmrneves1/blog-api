@@ -19,7 +19,10 @@ class CreatePostsCommentsTable extends Migration
             $table->unsignedBigInteger('user_id')->comment('Who commented.');
             $table->text('comment')->comment('Comment.');
             $table->unsignedBigInteger('parent_id')->nullable()->comment('Parent associated to a comment. Basically a reply to a comment.');
+            $table->tinyInteger('approved')->default(1)->comment('Flag to control if the comment is pending approval.');
             $table->timestamps();
+
+            $table->index('approved');
         });
     }
 

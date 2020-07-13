@@ -24,7 +24,7 @@ class EditComment extends FormRequest
     public function rules()
     {
         return [
-            'comment' => ['bail', 'required', 'string'],
+            'comment' => ['bail', 'required', 'string', 'min:10'],
         ];
     }
 
@@ -38,6 +38,7 @@ class EditComment extends FormRequest
         return [
             'comment.required' => 'The comment cannot the empty.',
             'comment.string' => 'Error while validating the comment.',
+            'comment.min' => 'The comment should be at least 10 chars long.',
         ];
     }
 }

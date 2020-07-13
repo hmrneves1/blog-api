@@ -70,7 +70,7 @@ class PostsComments extends Model
      * @var array
      */
     protected $fillable = [
-        'post_id', 'user_id', 'comment', 'parent_id'
+        'post_id', 'user_id', 'comment', 'parent_id', 'approved'
     ];
 
     /**

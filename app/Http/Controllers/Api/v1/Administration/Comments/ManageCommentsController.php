@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1\Administration\Comments;
 use App\Http\Controllers\Controller;
 use App\Models\Api\v1\Comments\PendingComments;
 use App\Models\Api\v1\Comments\PostsComments;
+use App\Models\Api\v1\Posts\Posts;
 use App\Traits\Api\v1\ApiResponse;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class ManageCommentsController extends Controller
     public function comments()
     {
         // Get all comments
-        $comments = PendingComments::with('author')->get();
+        $comments = PostsComments::with('author')->where('approved' , 0)->paginate(5);
 
         // Return response
         return $this->response(true, 200, config('http_response.200'), $comments);
@@ -35,28 +36,16 @@ class ManageCommentsController extends Controller
      */
     public function approve(Request $request)
     {
-        // Find pending comment
-        $pending_comment = PendingComments::findOrFail($request->comment_id);
-
-        // Move comment from pending table to main comment table
-        $stored = PostsComments::create([
-            'post_id' => $pending_comment->post_id,
-            'user_id' => $pending_comment->user_id,
-            'comment' => $pending_comment->comment,
-            'parent_id' => $pending_comment->parent_id,
+        // Update Post
+        $updated = PostsComments::findOrFail($request->comment_id)->update([
+            'approved' => 1,
         ]);
 
-        // Validate if the comment was stored
-        if ($stored)
+        // Validate if the comment was updated
+        if ($updated)
         {
-            // Remove the comment from the pendings table
-            $deleted = $pending_comment->delete();
-
-            // Validate if the comment was deleted
-            if ($deleted)
-            {
-                return $this->response(true, 200, config('http_responses.200'), []);
-            }
+            // Return success response
+            return $this->response(true, 200, config('http_responses.200'), []);
         }
 
         // Return default error message
@@ -69,7 +58,7 @@ class ManageCommentsController extends Controller
     public function delete(Request $request)
     {
         // Find pending post
-        $deleted = PendingComments::findOrFail($request->comment_id)->delete();
+        $deleted = PostsComments::findOrFail($request->comment_id)->delete();
 
         // Validate if the comment was deleted
         if ($deleted)

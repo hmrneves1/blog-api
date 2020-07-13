@@ -11,5 +11,6 @@ $factory->define(PostsComments::class, function (Faker $faker) {
         'post_id' => $faker->numberBetween(1, 50),
         'user_id' => $faker->numberBetween(1, 10),
         'comment' => $faker->sentence(50),
+        'approved' => $faker->numberBetween(0, 1),
     ];
 });

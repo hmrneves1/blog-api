@@ -20,5 +20,6 @@ $factory->define(Posts::class, function (Faker $faker) {
         'title' => $title,
         'body' => $faker->sentence(100),
         'image' => 'default.png',
+        'approved' => $faker->numberBetween(0, 1),
     ];
 });

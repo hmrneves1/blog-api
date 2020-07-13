@@ -25,8 +25,8 @@ class StoreNewComment extends FormRequest
     {
         return [
             'post_id' => ['bail', 'required', 'numeric'],
-            'comment' => ['bail', 'required', 'string'],
-            'parent_id' => ['nullable', 'numeric']
+            'comment' => ['bail', 'required', 'string', 'min:8'],
+            'parent_id' => ['nullable', 'numeric'],
         ];
     }
 
@@ -42,6 +42,7 @@ class StoreNewComment extends FormRequest
             'post_id.numeric' => 'Error while validating the post_id.',
             'comment.required' => 'The comment cannot the empty.',
             'comment.string' => 'Error while validating the comment.',
+            'comment.min' => 'The comment should be at least 10 chars long.',
             'parent_id.numeric' => 'Error while validating the parent_id from the comment.',
         ];
     }

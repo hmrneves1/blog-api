@@ -27,7 +27,7 @@ class ManagePostsController extends Controller
     public function pending_posts()
     {
         // Get all posts
-        $posts = PendingPosts::with('author')->get();
+        $posts = Posts::with('author')->where('approved' , 0)->paginate(5);
 
         //Return posts
         return $this->response(true, 200, config('http_responses.200'), $posts);
@@ -38,29 +38,16 @@ class ManagePostsController extends Controller
      */
     public function approve_post(Request $request)
     {
-        // Find pending post
-        $pending_post = PendingPosts::findOrFail($request->post_id);
-
-        // Move post from pending table to main posts table
-        $stored = Posts::create([
-            'user_id' => $pending_post->user_id,
-            'slug' => SlugService::createSlug(Posts::class, 'slug', $pending_post->title),
-            'title' => $pending_post->title,
-            'body' => $pending_post->body,
-            'image' => $pending_post->image,
+        // Update Post
+        $updated = Posts::findOrFail($request->post_id)->update([
+            'approved' => 1,
         ]);
 
-        // Validate if the post was stored
-        if ($stored)
+        // Validate if the post was updated
+        if ($updated)
         {
-            // Remove the post from the pendings table
-            $deleted = $pending_post->delete();
-
-            // Validate if the post was deleted
-            if ($deleted)
-            {
-                return $this->response(true, 200, config('http_responses.200'), []);
-            }
+            // Return success response
+            return $this->response(true, 200, config('http_responses.200'), []);
         }
 
         // Return default error message
@@ -73,7 +60,7 @@ class ManagePostsController extends Controller
     public function delete_pending_post(Request $request)
     {
         // Find pending post
-        $deleted = PendingPosts::findOrFail($request->post_id)->delete();
+        $deleted = Posts::findOrFail($request->post_id)->delete();
 
         // Validate if the post was deleted
         if ($deleted)

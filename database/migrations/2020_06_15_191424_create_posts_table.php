@@ -20,7 +20,10 @@ class CreatePostsTable extends Migration
             $table->string('title', 512)->comment('Post title.');
             $table->text('body')->comment('Post body.');
             $table->string('image')->nullable()->comment('Post image.');
+            $table->tinyInteger('approved')->default(1)->comment('Flag to control if the post is pending approval.');
             $table->timestamps();
+
+            $table->index('approved');
         });
     }
 

@@ -26,16 +26,6 @@ class CreateForeignKeys extends Migration
             $table->foreign('user_id')->references('user_id')->on('tbl_users')->onUpdate('cascade');
             $table->foreign('parent_id')->references('comment_id')->on('tbl_posts_comments')->onDelete('cascade')->onUpdate('cascade');
         });
-
-        Schema::table('tbl_pending_posts', function (Blueprint $table) {
-            $table->foreign('post_id')->references('post_id')->on('tbl_posts')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('user_id')->references('user_id')->on('tbl_users')->onUpdate('cascade');
-        });
-
-        Schema::table('tbl_pending_comments', function (Blueprint $table) {
-            $table->foreign('post_id')->references('post_id')->on('tbl_posts')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('user_id')->references('user_id')->on('tbl_users')->onUpdate('cascade');
-        });
     }
 
     /**

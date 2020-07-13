@@ -76,7 +76,7 @@ class Posts extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'title', 'body', 'image', 'slug',
+        'user_id', 'title', 'body', 'image', 'slug', 'approved'
     ];
 
     /**
