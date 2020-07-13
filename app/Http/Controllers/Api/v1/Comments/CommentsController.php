@@ -68,7 +68,8 @@ class CommentsController extends Controller
         {
             $comment_stored = PostsComments::create($validated_data);
         } else {
-            $comment_stored = PendingComments::create($validated_data);
+            $validated_data['approved'] = 0;
+            $comment_stored = PostsComments::create($validated_data);
         }
 
         // Check if the comment was stored

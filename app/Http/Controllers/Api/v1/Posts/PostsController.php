@@ -100,7 +100,9 @@ class PostsController extends Controller
         {
             $post = Posts::create($validated_data);
         } else {
-            $post = PendingPosts::create($validated_data);
+
+            $validated_data['approved'] = 0;
+            $post = Posts::create($validated_data);
         }
 
         // Check if the post was stored successfully
