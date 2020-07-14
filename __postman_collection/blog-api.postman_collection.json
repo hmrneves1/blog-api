@@ -156,6 +156,94 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "request_token() | Request a reset token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/auth/request-reset-password-token",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"request-reset-password-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set_new_password() | Take reset token and set new password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "69011f9519040b80ed69bdf4f756d4410efc931c",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "abcqq",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "abcqq",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/api/v1/auth/set-new-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"set-new-password"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -201,7 +289,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost/api/v1/categories/2",
+							"raw": "localhost/api/v1/categories/1",
 							"host": [
 								"localhost"
 							],
@@ -209,7 +297,7 @@
 								"api",
 								"v1",
 								"categories",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -400,7 +488,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost/api/v1/posts/<slug>",
+							"raw": "localhost/api/v1/posts/et-tempore-sed-amet-quibusdam-62313",
 							"host": [
 								"localhost"
 							],
@@ -408,7 +496,7 @@
 								"api",
 								"v1",
 								"posts",
-								"<slug>"
+								"et-tempore-sed-amet-quibusdam-62313"
 							]
 						}
 					},
@@ -429,11 +517,6 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "user_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
 									"key": "title",
 									"value": "It's a simple test on App\\Posts::store()",
 									"type": "text"
@@ -446,7 +529,17 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/helderneves/Google Drive/_HELDER NEVES/MEMES/HNE_SLB_Dollify.jpg"
+									"src": []
+								},
+								{
+									"key": "categories[]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "categories[]",
+									"value": "2",
+									"type": "text"
 								}
 							]
 						},
@@ -485,18 +578,23 @@
 								},
 								{
 									"key": "title",
-									"value": "New Title",
+									"value": "This is the New Title",
 									"type": "text"
 								},
 								{
 									"key": "body",
-									"value": "",
+									"value": "New Body New Body New Body New Body",
 									"type": "text"
 								},
 								{
 									"key": "image",
 									"type": "file",
 									"src": "/C:/Users/helderneves/Google Drive/_HELDER NEVES/MEMES/hmrneves.png"
+								},
+								{
+									"key": "categories[]",
+									"value": "5",
+									"type": "text"
 								}
 							]
 						},
@@ -699,7 +797,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost/api/v1/search/posts/by-keyword/<keyword>",
+							"raw": "localhost/api/v1/search/posts/by-keyword/lorem",
 							"host": [
 								"localhost"
 							],
@@ -709,25 +807,25 @@
 								"search",
 								"posts",
 								"by-keyword",
-								"<keyword>"
+								"lorem"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "By Cartegory ID",
+					"name": "By Category ID",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"url": {
-							"raw": "localhost/api/v1/search/posts/by-category/<category_id>",
+							"raw": "localhost/api/v1/search/posts/by-category/5",
 							"host": [
 								"localhost"
 							],
@@ -737,7 +835,7 @@
 								"search",
 								"posts",
 								"by-category",
-								"<category_id>"
+								"5"
 							]
 						}
 					},
@@ -914,7 +1012,7 @@
 								},
 								{
 									"key": "token",
-									"value": "8865f06173638279",
+									"value": "8655f08c463e9cd1",
 									"type": "text"
 								}
 							]
@@ -1007,7 +1105,7 @@
 									"formdata": [
 										{
 											"key": "post_id",
-											"value": "2",
+											"value": "1",
 											"type": "text"
 										}
 									]
@@ -1045,7 +1143,7 @@
 									"formdata": [
 										{
 											"key": "post_id",
-											"value": "2",
+											"value": "1",
 											"type": "text"
 										}
 									]
@@ -1117,7 +1215,7 @@
 									"formdata": [
 										{
 											"key": "comment_id",
-											"value": "1",
+											"value": "2",
 											"type": "text"
 										}
 									]
@@ -1155,7 +1253,7 @@
 									"formdata": [
 										{
 											"key": "comment_id",
-											"value": "3",
+											"value": "2",
 											"type": "text"
 										}
 									]
@@ -1223,7 +1321,7 @@
 									}
 								],
 								"url": {
-									"raw": "localhost/api/v1/administration/manage-users/list-user-posts?user_id=1&limit=4&order_by=asc",
+									"raw": "localhost/api/v1/administration/manage-users/list-user-posts?user_id=1&limit=2&order_by=desc",
 									"host": [
 										"localhost"
 									],
@@ -1241,11 +1339,11 @@
 										},
 										{
 											"key": "limit",
-											"value": "4"
+											"value": "2"
 										},
 										{
 											"key": "order_by",
-											"value": "asc"
+											"value": "desc"
 										}
 									]
 								}
@@ -1489,12 +1587,12 @@
 								},
 								{
 									"key": "password",
-									"value": "abcdefg1",
+									"value": "ab",
 									"type": "text"
 								},
 								{
 									"key": "password_confirmation",
-									"value": "abcdefg1",
+									"value": "ab",
 									"type": "text"
 								}
 							]
@@ -1564,7 +1662,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTMxZTI4MmE4OWY3NTdhNmUyMmM3YTcxNmZlN2MyODZlZDUwYjc3NjkwNDNiYTZiMDQ1NTMzZjkzZjNmOTM0MjRkYzYyZWNmZGNkODFhYzUiLCJpYXQiOjE1OTQzMTYzMzgsIm5iZiI6MTU5NDMxNjMzOCwiZXhwIjoxNjI1ODUyMzM4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.IL5zPoq3I-pqr9vyh0OClw00a8oIWXDcJu1Y7L5BEgjmyRQa3ZcXbfZl0DqrLYQ5oCLuwMgoKChkgnyXujgvQ8q9PrLu7BrltPqvOrlkh-7gTEusPOew3mWykLXHWyXQBv7fYTKegv8XRXSIz8B0pyZzqsR2_A5PcbwTgwlNlntJ7P19ZLZ8rGl1duNsHEIseeKmjmoLQaff8t6ARLAUsDa4pFJ7D3BmFD7NfWOzpahqhjb60J3oUTeAur_bIKEpzi9eOeuPp09Z2JVPisQ4Gj-vkbrDWHe73tgtd_10VFlrr1bEoz89xEDtR9WZTADDY9bN3oysgOP8RiEnpb3x-Ipgz8i_p6nzxux5DSaVjnGjyLUqAETyh_0k_Nf0jLvDyNxuqCJe8p05be8SlU6qxPDwbdm1_pJNl3G8R7cZ4cVGLuqAppVJMybdsVLUpAaADbXZwjriU1TlJt2H2MkY5npxecCmOLzZx5Gs3xJMemEU9rgxCLC7UsXpLiuHjLEGkJfRNJai5Vrvb1R2PgNH_nAq71tRgGBd20QG5kGZWtCVxxefA4Ufid3eH6xWjMFObaG8Pn__qVq4BgPUuq0bOkFEn135eI810XKGjmyLVfhPgRKsYwiQmXUPQYgJKH3qdbuT1Z2_maEMLWQL_HpOAAf825fyezxmwAxB_k6HQyU",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGU3YjUwNGUwZDI5ZDFmOTc5NWI5MzllYTRkZTc5MzNkOTBmNGRiYTg0NmFhZjgwZTEyMzZiOWJiYjRkNWZhYjM5N2E3MDBhZWMyOTVlMzkiLCJpYXQiOjE1OTQ2NzkxMzMsIm5iZiI6MTU5NDY3OTEzMywiZXhwIjoxNjI2MjE1MTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Mofu1jNDVEGFDfI4y9P-w00HGVq6LyCaP7gUtspB2B33-hHJOmteTYdEn8k3mBApGL8R1Sp8PVehPM1tvL6hWhwACcbw2FYdsuWbtN2cYgFlPGq_mP7MvA3VzbfOLFP_UXnv4NwgI_gsYXcnuEZc6BktCT6am5FC2Zc8WAsm2jcPGy1jOLfvkY-rTR_yH1j8RpxXUk2hwElCPlMgw2LsfvS-r1a3wvXan7G_KGJ9mmMvLpv8fAH0H2v0RGWy3ofk5dx0rE8koKZ4v1VFgDCuojhi5NwSF0Kdnqx8dub8V6Q-INNBvdjgPXAQ5kuubaEfwhEH13Ejxhe13Td0Hh7N4gSez_bk_B-YkbSMrvo3EBKsE43JmINaT0Fpjsocie6tCPHqrfTlkQSWPvw_ogStPrHjYgRNGk33fHcO4U6pJe8Ty2JGGLzhdGdsRSicBlb9VQRUFxupOJ3LxKOeNkCdz5Ps8gFBkd3ynb7Tqvxrx9_NBEAGGMutoqEzuSrf2TB-vcKD0efl0qCvxjGihcLz0wzQ6itq_sQsCI-NS6RQjE8J38anAj_X87Lmgof_wEFc_AcpfTC2k_XqE7Bigi0Tg2vv6PMGZDeRFdqgy-NpalYc0enj6CJd5f1AgshlYd7adI_94ftlsciEo4-9MTnMRV7-jxRqJWvpXoYy4Sye1ac",
 				"type": "string"
 			}
 		]

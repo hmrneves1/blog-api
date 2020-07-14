@@ -125,24 +125,4 @@ class User extends Authenticatable implements MustVerifyEmailAlias
     {
         return $this->hasMany('App\Models\Api\v1\Comments\PostsComments', 'user_id', 'user_id');
     }
-
-    /**
-     * Returns all pending posts for the given user
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function pending_posts()
-    {
-        return $this->hasMany('App\Models\Api\v1\Posts\PendingPosts', 'user_id', 'user_id');
-    }
-
-    /**
-     * Returns all pending comments for the given user
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function pending_comments()
-    {
-        return $this->hasMany('App\Api\v1\Comments\PendingComments', 'user_id', 'user_id');
-    }
 }

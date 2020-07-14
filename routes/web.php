@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/* Authentication Routes */
+Auth::routes(['register' => false]);
+
+/* Home Page */
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
