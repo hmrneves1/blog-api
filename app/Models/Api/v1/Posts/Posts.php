@@ -120,6 +120,6 @@ class Posts extends Model
      */
     public function comments()
     {
-        return $this->hasMany('App\Models\Api\v1\Comments\PostsComments', 'post_id', 'post_id');
+        return $this->hasMany('App\Models\Api\v1\Comments\PostsComments', 'post_id', 'post_id')->with('author');
     }
 }

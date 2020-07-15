@@ -22,7 +22,7 @@ class PostsSeeder extends Seeder
         // Populate the pivot table
         Posts::all()->each(function ($post) use ($categories) {
             $post->categories()->attach(
-                $categories->random(rand(1, 18))->pluck('category_id')->toArray()
+                $categories->random()->category_id
             );
         });
     }

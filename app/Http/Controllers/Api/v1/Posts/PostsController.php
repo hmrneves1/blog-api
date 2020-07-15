@@ -125,7 +125,7 @@ class PostsController extends Controller
     public function show($slug)
     {
         // Get the post data with the relations
-        $post = Posts::where('slug', '=', $slug)->with('comments', 'author', 'categories')->get();
+        $post = Posts::where('slug', '=', $slug)->with('author', 'comments', 'categories')->get();
 
         // If we doesn't get any post with the given slug, throw error
         if ($post->isEmpty())
@@ -145,6 +145,22 @@ class PostsController extends Controller
     {
         // Get the post data
         $post = Posts::findOrFail($post_id);
+
+        /**
+         * Permissions
+         * 1. If the user doesn't belong to the Administrators group
+         * 2. If the user isn't the comment owner
+         * 3. Throw error.
+         */
+        if (Auth::user()->group->group_id !== 1)
+        {
+            // Check if the user is the post owner, if not, throw error
+            if (Auth::user()->user_id !== $post->user_id)
+            {
+                // Return success message
+                return $this->response(false, 403, config('http_responses.403'), []);
+            }
+        }
 
         // Get the validated data from the request
         $validated_data = $request->validated();

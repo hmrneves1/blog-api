@@ -488,7 +488,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost/api/v1/posts/et-tempore-sed-amet-quibusdam-62313",
+							"raw": "localhost/api/v1/posts/<slug>",
 							"host": [
 								"localhost"
 							],
@@ -496,7 +496,7 @@
 								"api",
 								"v1",
 								"posts",
-								"et-tempore-sed-amet-quibusdam-62313"
+								"<slug>"
 							]
 						}
 					},

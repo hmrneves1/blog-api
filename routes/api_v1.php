@@ -72,8 +72,6 @@ Route::middleware(['auth:api'])->group(function () {
         /**
          * Posts Routes
          */
-        Route::post('/posts', 'Posts\PostsController@store');
-        Route::put('/posts/{post_id}', 'Posts\PostsController@update');
         Route::delete('/posts/{post_id}', 'Posts\PostsController@destroy');
 
         /**
@@ -114,6 +112,12 @@ Route::middleware(['auth:api'])->group(function () {
          */
         Route::get('/administration/manage-user-groups/list-groups', 'Administration\UserGroups\UserGroupsController@index');
     });
+
+    /**
+     * Posts Routes
+     */
+    Route::post('/posts', 'Posts\PostsController@store');
+    Route::put('/posts/{post_id}', 'Posts\PostsController@update');
 
     /**
      * Comments
