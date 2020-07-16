@@ -111,6 +111,16 @@ Route::middleware(['auth:api'])->group(function () {
          * Administration Routes - Groups
          */
         Route::get('/administration/manage-user-groups/list-groups', 'Administration\UserGroups\UserGroupsController@index');
+
+        /**
+         * Administration Routes - Manage Auto Accept Posts Value
+         */
+        Route::post('/administration/manage-auto-accept-posts-value', 'Administration\Posts\ManagePostsController@update_auto_accept_post_value');
+
+        /**
+         * Administration Routes - Manage Auto Accept Comments Value
+         */
+        Route::post('/administration/manage-auto-accept-comments-value', 'Administration\Comments\ManageCommentsController@update_auto_accept_comments_value');
     });
 
     /**

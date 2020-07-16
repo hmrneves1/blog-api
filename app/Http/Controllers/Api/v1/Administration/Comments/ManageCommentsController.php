@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api\v1\Administration\Comments;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\v1\Administration\Comments\AutoAcceptCommentsValue;
+use App\Models\Api\v1\Comments\AutoAcceptComments;
 use App\Models\Api\v1\Comments\PendingComments;
 use App\Models\Api\v1\Comments\PostsComments;
 use App\Models\Api\v1\Posts\Posts;
@@ -18,6 +20,33 @@ class ManageCommentsController extends Controller
      * Import ApiResponse Trait
      */
     use ApiResponse;
+
+    /**
+     * Updates the default value used to check if a comment can be auto accepted or not
+     *
+     * @param AutoAcceptCommentsValue $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update_auto_accept_comments_value(AutoAcceptCommentsValue $request)
+    {
+        // Return only the validated data
+        $validated_data = $request->validated();
+
+        // Update value
+        $updated = AutoAcceptComments::find(1)->update([
+            'min_comments' => $validated_data['min_comments'],
+        ]);
+
+        // Validate if the record was updated
+        if ($updated)
+        {
+            // Return success response
+            return $this->response(true, 200, config('http_responses.200'), []);
+        }
+
+        // Return error response by default
+        return $this->response(false, 500, config('http_responses.500'), []);
+    }
 
     /**
      * List all pending comments

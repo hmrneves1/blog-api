@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2589edc4-d475-4744-9691-d9963306a6d0",
+		"_postman_id": "48ebe0dc-5b2b-4d47-88b4-ba597a7ed29f",
 		"name": "blog-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1438,7 +1438,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "92d6d819-9b6b-4689-9566-8bda6954f963",
+								"id": "c0019e99-589d-4986-85c3-14ba09c2a266",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1448,7 +1448,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "25110d87-1996-42cd-9819-631d6e9a22bd",
+								"id": "99a5c6b4-1ab5-44c4-a8f7-3d44a4df53fe",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1488,6 +1488,114 @@
 								}
 							},
 							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Manage Auto Accept Posts",
+					"item": [
+						{
+							"name": "update_auto_accept_post_value() | Updates the default value used to check if a post can be auto accepted or not",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "min_posts",
+											"value": "5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost/api/v1/administration/manage-auto-accept-posts-value",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"administration",
+										"manage-auto-accept-posts-value"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Manage Auto Accept Comments",
+					"item": [
+						{
+							"name": "update_auto_accept_comments_value() | Updates the default value used to check if a comment can be auto accepted or not",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "min_comments",
+											"value": "777",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost/api/v1/administration/manage-auto-accept-comments-value",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"administration",
+										"manage-auto-accept-comments-value"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3ef6d9ed-b8f5-45e1-9b45-129cd41fb300",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7aed1c9b-9116-418e-ae75-973ee1489608",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -1662,7 +1770,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGU3YjUwNGUwZDI5ZDFmOTc5NWI5MzllYTRkZTc5MzNkOTBmNGRiYTg0NmFhZjgwZTEyMzZiOWJiYjRkNWZhYjM5N2E3MDBhZWMyOTVlMzkiLCJpYXQiOjE1OTQ2NzkxMzMsIm5iZiI6MTU5NDY3OTEzMywiZXhwIjoxNjI2MjE1MTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Mofu1jNDVEGFDfI4y9P-w00HGVq6LyCaP7gUtspB2B33-hHJOmteTYdEn8k3mBApGL8R1Sp8PVehPM1tvL6hWhwACcbw2FYdsuWbtN2cYgFlPGq_mP7MvA3VzbfOLFP_UXnv4NwgI_gsYXcnuEZc6BktCT6am5FC2Zc8WAsm2jcPGy1jOLfvkY-rTR_yH1j8RpxXUk2hwElCPlMgw2LsfvS-r1a3wvXan7G_KGJ9mmMvLpv8fAH0H2v0RGWy3ofk5dx0rE8koKZ4v1VFgDCuojhi5NwSF0Kdnqx8dub8V6Q-INNBvdjgPXAQ5kuubaEfwhEH13Ejxhe13Td0Hh7N4gSez_bk_B-YkbSMrvo3EBKsE43JmINaT0Fpjsocie6tCPHqrfTlkQSWPvw_ogStPrHjYgRNGk33fHcO4U6pJe8Ty2JGGLzhdGdsRSicBlb9VQRUFxupOJ3LxKOeNkCdz5Ps8gFBkd3ynb7Tqvxrx9_NBEAGGMutoqEzuSrf2TB-vcKD0efl0qCvxjGihcLz0wzQ6itq_sQsCI-NS6RQjE8J38anAj_X87Lmgof_wEFc_AcpfTC2k_XqE7Bigi0Tg2vv6PMGZDeRFdqgy-NpalYc0enj6CJd5f1AgshlYd7adI_94ftlsciEo4-9MTnMRV7-jxRqJWvpXoYy4Sye1ac",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWM0YWMwOGE2MWVhOTY1MDAwNzI3YmEzN2IxYWIzNjZjMDU2OTFjZGYyMzgzYjQxOWZhOTAyMzg0Nzg4NjgxNTgzMjM1ZTUxMTAyMjFmZDgiLCJpYXQiOjE1OTQ5MjM4NjQsIm5iZiI6MTU5NDkyMzg2NCwiZXhwIjoxNjI2NDU5ODY0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.beheosT7GfIDH4bdAXFRm1mYN-jIH4DIadn9oKN3z8O3X_uzxfFhc9NLkhJPy0zBmUzNCHUpuW7tQArGEaMW_em8tAS43uapQW5OEE0W1LheqQnwy6vI0EIcauU4PnIdVtkW2hgbFsKuDveUUZyfBZxGJlSmzgaiUbDVzfu0kkSqalrTBOaFh9gG85xt6kDAsMlvn9WZb7f3ltp3gUm-uYpjDtrj09AWq0C64FIpRIQ5bBM9ZTgq8wmZj5Rfw8OcngaLdweDPICXV1SU4EOMB42zH0bgRmolmU3734nTnD7BlRGzPNXt3X1lt3GjUxAR-hUGw1FJ1D7Xb6a245p77q89IbFvtl3q2TLOrzeey2z6Ob-1uCzitmBvVfGw3hNBKt6gLG_wg7AwwRT5-fa7j4770mISDnqToD701T8RCi0lfxXvwXeDDynPDYXSG4rA9062FgpSPf8CFsfe-BmwiEadjtcpzvNSBznXWG1OEszMEWKciuC2M5iumiBsZgAAae8KM3_MRkyFtkTiyRKSRaK661_60IUJx27tiFtD3SROToyTN4FRCZ546wf7CO8DSMsCIWK2HLEIUUIhOUDRuiTSSR812Oni9jUEDXqqNJmhWAMvRfqTdiPCQlbRgZUkL04M_5IzpnEnpxy85rbfG7vxN1TKV2JtZ2AZfOUHfB4",
 				"type": "string"
 			}
 		]
@@ -1671,7 +1779,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "cf8d8db3-2ac6-4ca1-83cc-aa5244a977f1",
+				"id": "984b1e92-2bbb-4c9b-9438-b1f86406a7c5",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1681,7 +1789,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "d28a6a56-6aaf-4db7-b106-7f5895d92733",
+				"id": "439d9b60-6766-4a4d-8b1b-71de087790dd",
 				"type": "text/javascript",
 				"exec": [
 					""
